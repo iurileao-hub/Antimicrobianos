@@ -1,0 +1,94 @@
+---
+/**
+ * modulos/index.astro
+ * Página de listagem de todos os módulos
+ */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ModuleCard from '../../components/ModuleCard.astro';
+
+const modules = await getCollection('modulos');
+const sortedModules = modules.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Módulos" description="Todos os módulos do Curso de Antimicrobianos">
+  <section class="modules-page">
+    <header class="modules-page__header">
+      <h1 class="title-display">Os Módulos</h1>
+      <p class="modules-page__intro">
+        Quatro batalhas. Dezenas de antimicrobianos. Um objetivo:
+        <strong>uso racional e baseado em evidências</strong>.
+      </p>
+    </header>
+
+    <div class="modules-grid">
+      {sortedModules.map((mod) => (
+        <ModuleCard
+          number={mod.data.moduleNumber}
+          title={mod.data.title}
+          subtitle={mod.data.subtitle}
+          drugs={mod.data.drugs}
+          href={`/modulos/${mod.slug}`}
+          bacteriaImage={mod.data.bacteriaImage}
+          bacteriaAlt={mod.data.bacteriaAlt ?? mod.data.bacteriaPlaceholder}
+          status={mod.data.draft ? 'em-breve' : 'disponivel'}
+        />
+      ))}
+    </div>
+
+    <div class="modules-page__cta">
+      <a href="/guia-rapido" class="btn btn--primary">
+        Acessar Guia de Consulta Rápida
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .modules-page {
+    padding: var(--space-3xl) var(--space-xl);
+    background: var(--color-cream);
+    min-height: calc(100vh - 200px);
+  }
+
+  .modules-page__header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--space-3xl);
+  }
+
+  .modules-page__header h1 {
+    font-size: var(--text-4xl);
+    color: var(--color-blood-red);
+    margin-bottom: var(--space-lg);
+  }
+
+  .modules-page__intro {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .modules-page__cta {
+    text-align: center;
+    margin-top: var(--space-3xl);
+  }
+
+  @media (max-width: 768px) {
+    .modules-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .modules-page__header h1 {
+      font-size: var(--text-3xl);
+    }
+  }
+</style>

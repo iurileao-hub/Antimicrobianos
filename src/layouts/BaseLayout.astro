@@ -1,0 +1,122 @@
+---
+/**
+ * BaseLayout.astro
+ * Layout principal do site - envolve todas as páginas
+ * Inclui: meta tags, fontes, estilos globais, header e footer
+ */
+
+interface Props {
+  title: string;
+  description?: string;
+  showNav?: boolean;
+}
+
+const {
+  title,
+  description = "Curso de Antimicrobianos para Residentes em Pediatria - HRT",
+  showNav = true
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description}>
+  <meta name="author" content="Dr. Iúri Almeida">
+
+  <!-- Favicon (placeholder - substituir depois) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Preconnect para fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <title>{title} | Curso de Antimicrobianos</title>
+</head>
+
+<body>
+  {showNav && (
+    <header>
+      <nav class="nav-vintage">
+        <ul class="nav-vintage__list">
+          <li>
+            <a
+              href="/"
+              class:list={["nav-vintage__link", { active: currentPath === "/" }]}
+            >
+              Início
+            </a>
+          </li>
+          <li>
+            <a
+              href="/modulos"
+              class:list={["nav-vintage__link", { active: currentPath.startsWith("/modulos") }]}
+            >
+              Módulos
+            </a>
+          </li>
+          <li>
+            <a
+              href="/guia-rapido"
+              class:list={["nav-vintage__link", { active: currentPath === "/guia-rapido" }]}
+            >
+              Guia Rápido
+            </a>
+          </li>
+          <li>
+            <a
+              href="/sobre"
+              class:list={["nav-vintage__link", { active: currentPath === "/sobre" }]}
+            >
+              Sobre
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  )}
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="footer-vintage">
+    <div class="footer-vintage__content">
+      <p class="footer-vintage__logo">Curso de Antimicrobianos</p>
+      <p class="footer-vintage__text">
+        Programa de Residência Médica em Pediatria<br>
+        Hospital Regional de Taguatinga (HRT)
+      </p>
+      <p class="footer-vintage__author">
+        Dr. Iúri Almeida — Pediatra Infectologista
+      </p>
+      <p class="footer-vintage__text mt-lg">
+        <small>&copy; {new Date().getFullYear()} — Material educacional</small>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/vintage.css';
+</style>
+
+<style>
+  /* Estilos específicos do layout */
+  main {
+    min-height: calc(100vh - 200px);
+  }
+
+  .nav-vintage__link.active {
+    color: var(--color-gold);
+  }
+
+  .nav-vintage__link.active::after {
+    width: 100%;
+  }
+</style>

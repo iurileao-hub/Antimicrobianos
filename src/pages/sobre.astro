@@ -1,0 +1,218 @@
+---
+/**
+ * sobre.astro
+ * Página sobre o curso e o autor
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Sobre" description="Sobre o Curso de Antimicrobianos e seu autor">
+  <div class="about-page">
+    <header class="about-header">
+      <h1 class="title-display">Sobre o Curso</h1>
+    </header>
+
+    <section class="about-content content-section">
+      <h2>O Curso de Antimicrobianos</h2>
+
+      <p>
+        Este curso foi desenvolvido para capacitar médicos residentes em pediatria do
+        <strong>Hospital Regional de Taguatinga (HRT)</strong> no uso racional e baseado
+        em evidências de antimicrobianos.
+      </p>
+
+      <p>
+        O conteúdo é estruturado em <strong>4 módulos</strong> que cobrem as principais
+        classes de antibióticos utilizados na prática pediátrica, desde as penicilinas
+        até os antimicrobianos de última geração para bactérias multiresistentes.
+      </p>
+
+      <h3>Competências Desenvolvidas</h3>
+
+      <ul>
+        <li>Selecionar antimicrobiano adequado com base em perfil microbiológico e farmacocinético</li>
+        <li>Ajustar doses e durações conforme idade, peso e função orgânica</li>
+        <li>Reconhecer e manejar efeitos adversos</li>
+        <li>Aplicar princípios de gerenciamento de antimicrobianos (<em>stewardship</em>)</li>
+      </ul>
+
+      <h3>Princípios Pedagógicos</h3>
+
+      <ul>
+        <li><strong>Didática acessível</strong> sem perder rigor científico</li>
+        <li><strong>Foco no uso clínico racional</strong> (não apenas farmacologia teórica)</li>
+        <li><strong>Evidências atualizadas</strong> de sociedades médicas reputadas</li>
+        <li><strong>Exemplos práticos</strong> de casos pediátricos</li>
+      </ul>
+
+      <h2>O Autor</h2>
+
+      <div class="author-card paper-card">
+        <div class="author-card__photo">
+          <img
+            src="/images/author.jpg"
+            alt="Dr. Iúri Almeida - Pediatra Infectologista"
+            class="author-card__photo-img"
+            loading="lazy"
+          />
+        </div>
+        <div class="author-card__info">
+          <h3>Dr. Iúri Almeida</h3>
+          <p class="author-card__title">Pediatra Infectologista</p>
+          <p>
+            Médico com mais de 20 anos de experiência em pediatria clínica,
+            atualmente atuando no Hospital Regional de Taguatinga (HRT).
+          </p>
+          <p>
+            Comprometido com a formação de residentes e o uso racional de
+            antimicrobianos na prática pediátrica.
+          </p>
+        </div>
+      </div>
+
+      <h2>Fontes de Referência</h2>
+
+      <p>Este curso utiliza como fontes preferenciais:</p>
+
+      <ul>
+        <li>Sociedade Brasileira de Pediatria (SBP)</li>
+        <li>Sociedade Brasileira de Infectologia (SBInf)</li>
+        <li>American Academy of Pediatrics (AAP) — Red Book</li>
+        <li>Infectious Diseases Society of America (IDSA)</li>
+        <li>Sanford Guide to Antimicrobial Therapy</li>
+      </ul>
+
+      <h2>Contato</h2>
+
+      <p>
+        Este é um material educacional desenvolvido para o Programa de Residência
+        Médica em Pediatria do HRT.
+      </p>
+
+      <p>
+        <strong>Instituição:</strong> Hospital Regional de Taguatinga<br>
+        <strong>Programa:</strong> Residência Médica em Pediatria
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .about-page {
+    background: var(--color-cream);
+  }
+
+  .about-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--space-2xl);
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-xl);
+    border-bottom: 2px solid var(--color-parchment);
+  }
+
+  .about-header h1 {
+    font-size: var(--text-4xl);
+    color: var(--color-blood-red);
+    margin-bottom: var(--space-md);
+  }
+
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-2xl) var(--space-xl);
+  }
+
+  .about-content h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    color: var(--color-blood-red);
+    margin: var(--space-2xl) 0 var(--space-lg);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--color-gold);
+  }
+
+  .about-content h2:first-of-type {
+    margin-top: 0;
+  }
+
+  .about-content h3 {
+    font-family: var(--font-headline);
+    font-size: var(--text-xl);
+    color: var(--text-primary);
+    margin: var(--space-xl) 0 var(--space-md);
+  }
+
+  .about-content p {
+    margin-bottom: var(--space-md);
+    line-height: 1.8;
+  }
+
+  .about-content ul {
+    margin-bottom: var(--space-lg);
+    padding-left: var(--space-xl);
+  }
+
+  .about-content li {
+    margin-bottom: var(--space-sm);
+    line-height: 1.6;
+  }
+
+  /* Author card */
+  .author-card {
+    display: flex;
+    gap: var(--space-xl);
+    padding: var(--space-xl);
+    margin: var(--space-xl) 0;
+    align-items: flex-start;
+  }
+
+  .author-card__photo {
+    flex-shrink: 0;
+  }
+
+  .author-card__photo-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--color-sepia-medium);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .author-card__info h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--text-primary);
+    margin: 0 0 var(--space-xs);
+  }
+
+  .author-card__title {
+    font-family: var(--font-headline);
+    font-size: var(--text-sm);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-blood-red);
+    margin-bottom: var(--space-md) !important;
+  }
+
+  .author-card__info p {
+    margin-bottom: var(--space-sm);
+  }
+
+  @media (max-width: 600px) {
+    .author-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+  }
+
+  @media (max-width: 768px) {
+    .about-header h1 {
+      font-size: var(--text-3xl);
+    }
+  }
+
+</style>

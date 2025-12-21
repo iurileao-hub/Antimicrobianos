@@ -1,0 +1,393 @@
+---
+/**
+ * index.astro
+ * Página inicial do Curso de Antimicrobianos
+ * Hero com pôster + Grid de módulos
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ModuleCard from '../components/ModuleCard.astro';
+
+// Dados dos módulos
+const modules = [
+  {
+    number: 1,
+    title: "Penicilinas",
+    subtitle: "A fundação da antibioticoterapia: das penicilinas naturais às aminopenicilinas",
+    drugs: ["Penicilina G", "Amoxicilina", "Ampicilina", "Amox-Clavulanato"],
+    href: "/modulos/penicilinas",
+    bacteriaImage: "/images/bacteria-mod1.png",
+    bacteriaAlt: "S. pyogenes fugindo assustado",
+    status: "disponivel" as const
+  },
+  {
+    number: 2,
+    title: "Cefalosporinas",
+    subtitle: "Das gerações à prática: espectro progressivo e indicações estratégicas",
+    drugs: ["Cefalexina", "Cefuroxima", "Ceftriaxona", "Cefepima"],
+    href: "/modulos/cefalosporinas",
+    bacteriaImage: "/images/bacteria-mod2.png",
+    bacteriaAlt: "E. coli apavorada",
+    status: "disponivel" as const
+  },
+  {
+    number: 3,
+    title: "Oxacilina, Macrolídeos, Clindamicina e Rifampicina",
+    subtitle: "Arsenal contra estafilococos, atípicos e infecções complexas",
+    drugs: ["Oxacilina", "Azitromicina", "Clindamicina", "Rifampicina"],
+    href: "/modulos/antiestafilococcicas-macrolideos",
+    bacteriaImage: "/images/bacteria-mod3.png",
+    bacteriaAlt: "S. aureus de cartola e monóculo",
+    status: "disponivel" as const
+  },
+  {
+    number: 4,
+    title: "Glicopeptídeos e Última Geração",
+    subtitle: "Reservas estratégicas: quando os outros falham",
+    drugs: ["Vancomicina", "Meropenem", "Linezolida", "Ceftaroline"],
+    href: "/modulos/glicopeptideos-ultima-geracao",
+    bacteriaImage: "/images/bacteria-mod4.png",
+    bacteriaAlt: "MRSA derrotado e assustado",
+    status: "disponivel" as const
+  }
+];
+---
+
+<BaseLayout title="Início" showNav={false}>
+  <!-- Hero Section com Pôster -->
+  <section class="hero-poster">
+    <div class="hero-poster__content">
+      <img
+        src="/images/poster-hero.jpg"
+        alt="Curso de Antimicrobianos para Residentes em Pediatria - HRT. Um médico em jaleco branco segura um frasco de antibiótico enquanto bactérias caricatas fogem assustadas."
+        class="hero-poster__image"
+        loading="eager"
+      />
+
+      <p class="hero-poster__tagline">
+        "Prepare o estetoscópio. E o antibiograma."
+      </p>
+
+      <div class="hero-poster__cta">
+        <a href="#modulos" class="btn btn--primary">
+          Explorar Módulos
+        </a>
+        <a href="/guia-rapido" class="btn btn--secondary">
+          Guia de Consulta Rápida
+        </a>
+      </div>
+    </div>
+
+    <!-- Indicador de scroll -->
+    <div class="hero-poster__scroll-indicator">
+      <span>Deslize para explorar</span>
+      <div class="hero-poster__scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Navegação fixa após hero -->
+  <nav class="nav-vintage nav-vintage--sticky" id="nav-main">
+    <ul class="nav-vintage__list">
+      <li>
+        <a href="/" class="nav-vintage__link active">Início</a>
+      </li>
+      <li>
+        <a href="#modulos" class="nav-vintage__link">Módulos</a>
+      </li>
+      <li>
+        <a href="/guia-rapido" class="nav-vintage__link">Guia Rápido</a>
+      </li>
+      <li>
+        <a href="/sobre" class="nav-vintage__link">Sobre</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Seção de Módulos -->
+  <section class="modules-section" id="modulos">
+    <div class="modules-section__header">
+      <h2 class="title-display">Os Módulos</h2>
+      <p class="modules-section__intro">
+        Quatro batalhas. Dezenas de antimicrobianos. Um objetivo:
+        <strong>uso racional e baseado em evidências</strong>.
+      </p>
+    </div>
+
+    <div class="modules-grid">
+      {modules.map((mod) => (
+        <ModuleCard
+          number={mod.number}
+          title={mod.title}
+          subtitle={mod.subtitle}
+          drugs={mod.drugs}
+          href={mod.href}
+          bacteriaImage={mod.bacteriaImage}
+          bacteriaAlt={mod.bacteriaAlt}
+          status={mod.status}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Seção de chamada para o Guia Rápido -->
+  <section class="cta-section">
+    <div class="cta-section__content paper-card paper-card--aged">
+      <h2 class="title-headline">Precisa de uma consulta rápida?</h2>
+      <p>
+        Doses, regimes terapêuticos e alertas de segurança —
+        tudo num único lugar para uso ao lado do leito.
+      </p>
+      <a href="/guia-rapido" class="btn btn--primary">
+        Acessar Guia de Consulta Rápida
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero específico da home */
+  .hero-poster {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height para mobile */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-xl);
+    padding-bottom: calc(var(--space-3xl) + 60px); /* Espaço garantido para o scroll indicator */
+    background: linear-gradient(
+      180deg,
+      var(--color-burgundy) 0%,
+      var(--color-sepia-dark) 50%,
+      var(--color-burgundy) 100%
+    );
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Vinheta nas bordas */
+  .hero-poster::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 40%,
+      rgba(26, 15, 10, 0.6) 100%
+    );
+    pointer-events: none;
+  }
+
+  .hero-poster__content {
+    position: relative;
+    z-index: 3; /* Acima do scroll indicator (z-index: 2) para botões clicáveis */
+    max-width: 100%;
+  }
+
+  .hero-poster__image {
+    max-width: 500px;
+    width: 90%;
+    border-radius: var(--border-radius);
+    box-shadow:
+      0 0 0 4px var(--color-gold),
+      0 0 0 8px var(--color-sepia-dark),
+      var(--shadow-dramatic);
+  }
+
+  .hero-poster__tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-xl);
+    color: var(--color-cream);
+    margin-top: var(--space-xl);
+  }
+
+  .hero-poster__cta {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    margin-top: var(--space-2xl);
+    flex-wrap: wrap;
+  }
+
+  .hero-poster__scroll-indicator {
+    position: absolute;
+    bottom: var(--space-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-parchment);
+    font-size: var(--text-sm);
+    text-align: center;
+    opacity: 0.8;
+    animation: bounce 2s infinite;
+    z-index: 2; /* Acima da vinheta mas abaixo do conteúdo interativo */
+    pointer-events: none; /* Não interfere com cliques */
+  }
+
+  .hero-poster__scroll-arrow {
+    width: 24px;
+    height: 24px;
+    margin: var(--space-sm) auto 0;
+    border-right: 2px solid var(--color-parchment);
+    border-bottom: 2px solid var(--color-parchment);
+    transform: rotate(45deg);
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    40% {
+      transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+      transform: translateX(-50%) translateY(-5px);
+    }
+  }
+
+  /* Navegação sticky */
+  .nav-vintage--sticky {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  /* Seção de módulos */
+  .modules-section {
+    padding: var(--space-3xl) var(--space-xl);
+    background: var(--color-cream);
+  }
+
+  .modules-section__header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--space-3xl);
+  }
+
+  .modules-section__header h2 {
+    font-size: var(--text-4xl);
+    color: var(--color-blood-red);
+    margin-bottom: var(--space-lg);
+  }
+
+  .modules-section__intro {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Seção CTA */
+  .cta-section {
+    padding: var(--space-3xl) var(--space-xl);
+    background: linear-gradient(
+      180deg,
+      var(--color-cream) 0%,
+      var(--color-cream-dark) 100%
+    );
+  }
+
+  .cta-section__content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--space-2xl);
+    text-align: center;
+  }
+
+  .cta-section__content h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .cta-section__content p {
+    margin-bottom: var(--space-xl);
+    color: var(--text-secondary);
+  }
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .hero-poster {
+      padding: var(--space-lg);
+      padding-bottom: calc(var(--space-2xl) + 50px);
+    }
+
+    .hero-poster__image {
+      max-width: 95%;
+      width: 100%;
+    }
+
+    .hero-poster__tagline {
+      font-size: var(--text-lg);
+      margin-top: var(--space-lg);
+    }
+
+    .hero-poster__cta {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+    }
+
+    .hero-poster__cta .btn {
+      width: 100%;
+      max-width: 280px;
+      text-align: center;
+    }
+
+    .hero-poster__scroll-indicator {
+      font-size: var(--text-xs);
+      bottom: var(--space-md);
+    }
+
+    .hero-poster__scroll-arrow {
+      width: 18px;
+      height: 18px;
+    }
+
+    .modules-section {
+      padding: var(--space-2xl) var(--space-md);
+    }
+
+    .modules-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .modules-section__header h2 {
+      font-size: var(--text-3xl);
+    }
+
+    .cta-section {
+      padding: var(--space-2xl) var(--space-md);
+    }
+
+    .cta-section__content {
+      padding: var(--space-xl);
+    }
+  }
+
+  /* Telas muito pequenas */
+  @media (max-width: 480px) {
+    .hero-poster__tagline {
+      font-size: var(--text-base);
+    }
+
+    .modules-section__header h2 {
+      font-size: var(--text-2xl);
+    }
+
+    .modules-section__intro {
+      font-size: var(--text-base);
+    }
+  }
+</style>
