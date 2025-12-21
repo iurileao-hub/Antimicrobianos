@@ -2,7 +2,7 @@
 
 > Referência baseada em evidências para uso racional de antimicrobianos em pediatria
 
-**Acesse o site:** [atbhrtped.vercel.app](https://atbhrtped.vercel.app)
+**Acesse o site:** [atbpedhrt.vercel.app](https://atbpedhrt.vercel.app)
 
 ## 📚 Sobre o Projeto
 
@@ -173,7 +173,7 @@ O site é deployado automaticamente no Vercel:
 1. **Branch:** `main` triggers automatic deploy
 2. **Build Command:** `npm run build`
 3. **Output Directory:** `dist/`
-4. **URL:** https://atbhrtped.vercel.app
+4. **URL:** https://atbpedhrt.vercel.app
 
 ### Pré-deploy
 

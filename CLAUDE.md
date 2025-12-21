@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Antimicrobianos** is a static educational website for teaching antimicrobial therapy to pediatric residents at Hospital Regional de Taguatinga (HRT). Built with **Astro 5.16.6**, the site features a vintage 1930s-1950s cinema poster aesthetic with interactive course modules.
 
-- **Site URL:** https://atbhrtped.vercel.app (Vercel deployment)
+- **Site URL:** https://atbpedhrt.vercel.app (Vercel deployment)
 - **Framework:** Astro 5.16.6 (static site generation, minimal dependencies)
 - **Author:** Dr. Iúri Almeida, Pediatric Infectologist
 - **Language:** Portuguese
