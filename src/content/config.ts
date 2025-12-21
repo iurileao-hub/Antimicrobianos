@@ -15,6 +15,7 @@ const modulosCollection = defineCollection({
     bacteriaPlaceholder: z.string().optional(),
     bacteriaImage: z.string().optional(),
     bacteriaAlt: z.string().optional(),
+    slidesUrl: z.string().optional(),
     order: z.number(),
     draft: z.boolean().default(false),
   }),

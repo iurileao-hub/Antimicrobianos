@@ -11,9 +11,10 @@ drugs:
   - Daptomicina
   - Ceftarolina
   - Ceftazidima-Avibactam
-bacteriaPlaceholder: "MRSA derrotado"
+bacteriaPlaceholder: "MRSA"
 bacteriaImage: "/images/bacteria-mod4.png"
-bacteriaAlt: "MRSA derrotado e assustado"
+bacteriaAlt: "Staphylococcus aureus resistente à meticilina (MRSA) - caricatura ilustrada de bactéria derrotada com expressão assustada"
+slidesUrl: "/slides/modulo-4-glicopeptideos-ultima-geracao.pdf"
 order: 4
 draft: false
 ---

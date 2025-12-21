@@ -10,9 +10,10 @@ drugs:
   - Claritromicina
   - Clindamicina
   - Rifampicina
-bacteriaPlaceholder: "S. aureus de cartola"
+bacteriaPlaceholder: "S. aureus"
 bacteriaImage: "/images/bacteria-mod3.png"
-bacteriaAlt: "S. aureus de cartola e monóculo"
+bacteriaAlt: "Staphylococcus aureus - caricatura ilustrada de bactéria sofisticada com cartola e monóculo"
+slidesUrl: "/slides/modulo-3-oxacilina-macrolideos.pdf"
 order: 3
 draft: false
 ---

@@ -40,6 +40,17 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
             <span class="module-header__drug-tag">{drug}</span>
           ))}
         </div>
+
+        {mod.data.slidesUrl && (
+          <a
+            href={mod.data.slidesUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="module-header__slides-btn"
+          >
+            Abrir Apresentação de Slides
+          </a>
+        )}
       </div>
 
       <!-- Placeholder para bactéria -->
@@ -200,6 +211,44 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
     color: var(--color-gold-light);
     padding: var(--space-xs) var(--space-md);
     border-radius: 2px;
+  }
+
+  .module-header__slides-btn {
+    display: inline-block;
+    margin-top: var(--space-lg);
+    padding: var(--space-md) var(--space-2xl);
+    background: transparent;
+    color: var(--color-gold);
+    text-decoration: none;
+    border-radius: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: all var(--transition-base);
+    border: 2px solid var(--color-gold);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .module-header__slides-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--color-gold);
+    transition: left var(--transition-base);
+    z-index: -1;
+  }
+
+  .module-header__slides-btn:hover {
+    color: var(--color-burgundy);
+  }
+
+  .module-header__slides-btn:hover::before {
+    left: 0;
   }
 
   .module-header__bacteria {
@@ -486,7 +535,7 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
   }
 
   /* Responsividade */
-  @media (max-width: 968px) {
+  @media (max-width: var(--breakpoint-lg)) {
     .module-content {
       grid-template-columns: 1fr;
     }
@@ -508,7 +557,7 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: var(--breakpoint-sm)) {
     .module-pagination {
       flex-direction: column;
       gap: var(--space-md);

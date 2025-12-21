@@ -11,9 +11,10 @@ drugs:
   - Cefotaxima
   - Ceftazidima
   - Cefepima
-bacteriaPlaceholder: "E. coli apavorada"
+bacteriaPlaceholder: "E. coli"
 bacteriaImage: "/images/bacteria-mod2.png"
-bacteriaAlt: "E. coli apavorada"
+bacteriaAlt: "Escherichia coli - caricatura ilustrada de bactéria com expressão assustada"
+slidesUrl: "/slides/modulo-2-cefalosporinas.pdf"
 order: 2
 draft: false
 ---

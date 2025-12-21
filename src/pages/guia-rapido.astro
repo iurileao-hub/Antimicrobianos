@@ -5,16 +5,15 @@
  * Referência prática ao lado do leito
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
 ---
 
 <BaseLayout title="Guia de Consulta Rápida" description="Guia de consulta rápida de antimicrobianos em pediatria - doses, regimes e alertas">
   <div class="guide-page">
-    <header class="guide-header">
-      <h1 class="title-display">Guia de Consulta Rápida</h1>
-      <p class="guide-header__subtitle">
-        Antimicrobianos em Pediatria — Referência ao Lado do Leito
-      </p>
-    </header>
+    <PageHeader
+      title="Guia de Consulta Rápida"
+      subtitle="Antimicrobianos em Pediatria — Referência ao Lado do Leito"
+    />
 
     <!-- Princípios -->
     <section class="guide-section paper-card">
@@ -52,10 +51,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <table class="table-vintage">
           <thead>
             <tr>
-              <th>Infecção</th>
-              <th>Patógenos</th>
-              <th>1ª Escolha</th>
-              <th>Alternativa</th>
+              <th scope="col">Infecção</th>
+              <th scope="col">Patógenos</th>
+              <th scope="col">1ª Escolha</th>
+              <th scope="col">Alternativa</th>
             </tr>
           </thead>
           <tbody>
@@ -125,10 +124,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <table class="table-vintage">
           <thead>
             <tr>
-              <th>Infecção</th>
-              <th>Patógenos</th>
-              <th>1ª Escolha</th>
-              <th>Alternativa</th>
+              <th scope="col">Infecção</th>
+              <th scope="col">Patógenos</th>
+              <th scope="col">1ª Escolha</th>
+              <th scope="col">Alternativa</th>
             </tr>
           </thead>
           <tbody>
@@ -169,10 +168,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <table class="table-vintage">
           <thead>
             <tr>
-              <th>Infecção</th>
-              <th>Patógenos</th>
-              <th>1ª Escolha</th>
-              <th>Alternativa</th>
+              <th scope="col">Infecção</th>
+              <th scope="col">Patógenos</th>
+              <th scope="col">1ª Escolha</th>
+              <th scope="col">Alternativa</th>
             </tr>
           </thead>
           <tbody>
@@ -230,10 +229,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <table class="table-vintage">
           <thead>
             <tr>
-              <th>Infecção</th>
-              <th>Patógenos</th>
-              <th>1ª Escolha</th>
-              <th>Alternativa</th>
+              <th scope="col">Infecção</th>
+              <th scope="col">Patógenos</th>
+              <th scope="col">1ª Escolha</th>
+              <th scope="col">Alternativa</th>
             </tr>
           </thead>
           <tbody>
@@ -268,10 +267,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <table class="table-vintage">
           <thead>
             <tr>
-              <th>Infecção</th>
-              <th>Patógenos</th>
-              <th>1ª Escolha</th>
-              <th>Duração</th>
+              <th scope="col">Infecção</th>
+              <th scope="col">Patógenos</th>
+              <th scope="col">1ª Escolha</th>
+              <th scope="col">Duração</th>
             </tr>
           </thead>
           <tbody>
@@ -306,10 +305,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <table class="table-vintage">
           <thead>
             <tr>
-              <th>Infecção</th>
-              <th>Patógenos</th>
-              <th>1ª Escolha</th>
-              <th>Alternativa</th>
+              <th scope="col">Infecção</th>
+              <th scope="col">Patógenos</th>
+              <th scope="col">1ª Escolha</th>
+              <th scope="col">Alternativa</th>
             </tr>
           </thead>
           <tbody>
@@ -348,10 +347,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <table class="table-vintage">
           <thead>
             <tr>
-              <th>Situação</th>
-              <th>Patógenos</th>
-              <th>1ª Escolha</th>
-              <th>Alternativa</th>
+              <th scope="col">Situação</th>
+              <th scope="col">Patógenos</th>
+              <th scope="col">1ª Escolha</th>
+              <th scope="col">Alternativa</th>
             </tr>
           </thead>
           <tbody>
@@ -391,10 +390,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <table class="table-vintage">
           <thead>
             <tr>
-              <th>Situação</th>
-              <th>Patógenos</th>
-              <th>1ª Escolha</th>
-              <th>Duração</th>
+              <th scope="col">Situação</th>
+              <th scope="col">Patógenos</th>
+              <th scope="col">1ª Escolha</th>
+              <th scope="col">Duração</th>
             </tr>
           </thead>
           <tbody>
@@ -637,7 +636,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   /* Responsividade */
-  @media (max-width: 768px) {
+  @media (max-width: var(--breakpoint-md)) {
     .guide-header h1 {
       font-size: var(--text-3xl);
     }

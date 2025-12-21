@@ -39,9 +39,12 @@ const currentPath = Astro.url.pathname;
 </head>
 
 <body>
+  <!-- Skip link para acessibilidade de teclado -->
+  <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+
   {showNav && (
-    <header>
-      <nav class="nav-vintage">
+    <header role="banner">
+      <nav class="nav-vintage" aria-label="Navegação principal">
         <ul class="nav-vintage__list">
           <li>
             <a
@@ -80,7 +83,7 @@ const currentPath = Astro.url.pathname;
     </header>
   )}
 
-  <main>
+  <main id="main-content">
     <slot />
   </main>
 
@@ -110,6 +113,26 @@ const currentPath = Astro.url.pathname;
   /* Estilos específicos do layout */
   main {
     min-height: calc(100vh - 200px);
+  }
+
+  /* Skip link para acessibilidade */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+    background: var(--color-blood-red);
+    color: var(--color-cream);
+    padding: var(--space-md) var(--space-lg);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+  }
+
+  .skip-link:focus {
+    left: 0;
+    top: 0;
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
   }
 
   .nav-vintage__link.active {

@@ -9,9 +9,10 @@ drugs:
   - Ampicilina
   - Amoxicilina-Clavulanato
   - Ampicilina-Sulbactam
-bacteriaPlaceholder: "S. pyogenes fugindo"
+bacteriaPlaceholder: "S. pyogenes"
 bacteriaImage: "/images/bacteria-mod1.png"
-bacteriaAlt: "S. pyogenes fugindo assustado"
+bacteriaAlt: "Streptococcus pyogenes - caricatura ilustrada de bactéria com expressão de pânico fugindo"
+slidesUrl: "/slides/modulo-1-penicilinas.pdf"
 order: 1
 draft: false
 ---

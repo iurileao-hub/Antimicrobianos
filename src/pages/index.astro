@@ -4,52 +4,25 @@
  * Página inicial do Curso de Antimicrobianos
  * Hero com pôster + Grid de módulos
  */
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ModuleCard from '../components/ModuleCard.astro';
 
-// Dados dos módulos
-const modules = [
-  {
-    number: 1,
-    title: "Penicilinas",
-    subtitle: "A fundação da antibioticoterapia: das penicilinas naturais às aminopenicilinas",
-    drugs: ["Penicilina G", "Amoxicilina", "Ampicilina", "Amox-Clavulanato"],
-    href: "/modulos/penicilinas",
-    bacteriaImage: "/images/bacteria-mod1.png",
-    bacteriaAlt: "S. pyogenes fugindo assustado",
-    status: "disponivel" as const
-  },
-  {
-    number: 2,
-    title: "Cefalosporinas",
-    subtitle: "Das gerações à prática: espectro progressivo e indicações estratégicas",
-    drugs: ["Cefalexina", "Cefuroxima", "Ceftriaxona", "Cefepima"],
-    href: "/modulos/cefalosporinas",
-    bacteriaImage: "/images/bacteria-mod2.png",
-    bacteriaAlt: "E. coli apavorada",
-    status: "disponivel" as const
-  },
-  {
-    number: 3,
-    title: "Oxacilina, Macrolídeos, Clindamicina e Rifampicina",
-    subtitle: "Arsenal contra estafilococos, atípicos e infecções complexas",
-    drugs: ["Oxacilina", "Azitromicina", "Clindamicina", "Rifampicina"],
-    href: "/modulos/antiestafilococcicas-macrolideos",
-    bacteriaImage: "/images/bacteria-mod3.png",
-    bacteriaAlt: "S. aureus de cartola e monóculo",
-    status: "disponivel" as const
-  },
-  {
-    number: 4,
-    title: "Glicopeptídeos e Última Geração",
-    subtitle: "Reservas estratégicas: quando os outros falham",
-    drugs: ["Vancomicina", "Meropenem", "Linezolida", "Ceftaroline"],
-    href: "/modulos/glicopeptideos-ultima-geracao",
-    bacteriaImage: "/images/bacteria-mod4.png",
-    bacteriaAlt: "MRSA derrotado e assustado",
-    status: "disponivel" as const
-  }
-];
+// Obter módulos dinamicamente
+const allModules = await getCollection('modulos');
+const modules = allModules
+  .filter(mod => !mod.data.draft)
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(mod => ({
+    number: mod.data.moduleNumber,
+    title: mod.data.title,
+    subtitle: mod.data.subtitle,
+    drugs: mod.data.drugs.slice(0, 4), // Mostrar apenas 4 primeiros
+    href: `/modulos/${mod.slug}`,
+    bacteriaImage: mod.data.bacteriaImage,
+    bacteriaAlt: mod.data.bacteriaAlt,
+    status: 'disponivel' as const
+  }));
 ---
 
 <BaseLayout title="Início" showNav={false}>
@@ -61,6 +34,8 @@ const modules = [
         alt="Curso de Antimicrobianos para Residentes em Pediatria - HRT. Um médico em jaleco branco segura um frasco de antibiótico enquanto bactérias caricatas fogem assustadas."
         class="hero-poster__image"
         loading="eager"
+        width="859"
+        height="1280"
       />
 
       <p class="hero-poster__tagline">
@@ -190,6 +165,7 @@ const modules = [
   .hero-poster__image {
     max-width: 500px;
     width: 90%;
+    height: auto;
     border-radius: var(--border-radius);
     box-shadow:
       0 0 0 4px var(--color-gold),
@@ -315,7 +291,7 @@ const modules = [
   }
 
   /* Responsividade */
-  @media (max-width: 768px) {
+  @media (max-width: var(--breakpoint-md)) {
     .hero-poster {
       padding: var(--space-lg);
       padding-bottom: calc(var(--space-2xl) + 50px);
@@ -377,7 +353,7 @@ const modules = [
   }
 
   /* Telas muito pequenas */
-  @media (max-width: 480px) {
+  @media (max-width: var(--breakpoint-xs)) {
     .hero-poster__tagline {
       font-size: var(--text-base);
     }

@@ -5,6 +5,7 @@
  */
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import ModuleCard from '../../components/ModuleCard.astro';
 
 const modules = await getCollection('modulos');
@@ -13,13 +14,12 @@ const sortedModules = modules.sort((a, b) => a.data.order - b.data.order);
 
 <BaseLayout title="Módulos" description="Todos os módulos do Curso de Antimicrobianos">
   <section class="modules-page">
-    <header class="modules-page__header">
-      <h1 class="title-display">Os Módulos</h1>
+    <PageHeader title="Os Módulos">
       <p class="modules-page__intro">
         Quatro batalhas. Dezenas de antimicrobianos. Um objetivo:
         <strong>uso racional e baseado em evidências</strong>.
       </p>
-    </header>
+    </PageHeader>
 
     <div class="modules-grid">
       {sortedModules.map((mod) => (
@@ -46,21 +46,8 @@ const sortedModules = modules.sort((a, b) => a.data.order - b.data.order);
 
 <style>
   .modules-page {
-    padding: var(--space-3xl) var(--space-xl);
     background: var(--color-cream);
     min-height: calc(100vh - 200px);
-  }
-
-  .modules-page__header {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto var(--space-3xl);
-  }
-
-  .modules-page__header h1 {
-    font-size: var(--text-4xl);
-    color: var(--color-blood-red);
-    margin-bottom: var(--space-lg);
   }
 
   .modules-page__intro {
@@ -75,6 +62,7 @@ const sortedModules = modules.sort((a, b) => a.data.order - b.data.order);
     gap: var(--space-xl);
     max-width: 1200px;
     margin: 0 auto;
+    padding: var(--space-3xl) var(--space-xl);
   }
 
   .modules-page__cta {
@@ -82,13 +70,9 @@ const sortedModules = modules.sort((a, b) => a.data.order - b.data.order);
     margin-top: var(--space-3xl);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: var(--breakpoint-md)) {
     .modules-grid {
       grid-template-columns: 1fr;
-    }
-
-    .modules-page__header h1 {
-      font-size: var(--text-3xl);
     }
   }
 </style>

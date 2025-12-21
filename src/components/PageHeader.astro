@@ -1,0 +1,118 @@
+---
+/**
+ * PageHeader.astro
+ * Componente header reutilizável para páginas
+ * Exibe título e conteúdo adicional opcional
+ * variant: 'simple' (centrado, sem background) ou 'dramatic' (fundo vermelho estilo módulo)
+ */
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  class?: string;
+  variant?: 'simple' | 'dramatic';
+}
+
+const { title, subtitle, class: className = '', variant = 'simple' } = Astro.props;
+---
+
+<header class:list={['page-header', `page-header--${variant}`, className]}>
+  <div class="page-header__content">
+    <h1 class="page-header__title">{title}</h1>
+    {subtitle && <p class="page-header__subtitle">{subtitle}</p>}
+    <slot />
+  </div>
+</header>
+
+<style>
+  .page-header {
+    padding: var(--space-3xl) var(--space-xl);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Variante simples - centrada, sem background dramático */
+  .page-header--simple {
+    background: var(--color-cream);
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+  /* Variante dramática - fundo vermelho estilo módulo */
+  .page-header--dramatic {
+    background: linear-gradient(
+      180deg,
+      var(--color-burgundy) 0%,
+      var(--color-sepia-dark) 100%
+    );
+    color: var(--text-light);
+  }
+
+  .page-header--dramatic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      ellipse at bottom right,
+      transparent 50%,
+      rgba(26, 15, 10, 0.4) 100%
+    );
+    pointer-events: none;
+  }
+
+  .page-header__content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-header__title {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
+  }
+
+  .page-header--simple .page-header__title {
+    color: var(--color-blood-red);
+  }
+
+  .page-header--dramatic .page-header__title {
+    font-size: var(--text-5xl);
+    font-weight: 900;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .page-header__subtitle {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    line-height: 1.6;
+  }
+
+  .page-header--simple .page-header__subtitle {
+    color: var(--text-secondary);
+  }
+
+  .page-header--dramatic .page-header__subtitle {
+    opacity: 0.9;
+  }
+
+  @media (max-width: var(--breakpoint-md)) {
+    .page-header {
+      padding: var(--space-2xl) var(--space-lg);
+    }
+
+    .page-header__title {
+      font-size: var(--text-3xl);
+    }
+
+    .page-header__subtitle {
+      font-size: var(--text-lg);
+    }
+  }
+</style>
