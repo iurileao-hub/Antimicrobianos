@@ -6,6 +6,7 @@
  */
 import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
 
 export async function getStaticPaths() {
   const modules = await getCollection('modulos');
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
 }
 
 const { mod } = Astro.props;
-const { Content } = await mod.render();
+const { Content, headings } = await mod.render();
 
 // Navegação entre módulos
 const allModules = await getCollection('modulos');
@@ -79,15 +80,18 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
       <!-- Sidebar com navegação -->
       <aside class="module-sidebar">
         <div class="module-sidebar__sticky">
-          <h3 class="module-sidebar__title">Navegação</h3>
-          <nav class="module-sidebar__nav">
-            <a href="/modulos" class="module-sidebar__link">
-              ← Todos os Módulos
-            </a>
-            <a href="/guia-rapido" class="module-sidebar__link">
-              Guia de Consulta Rápida
-            </a>
-          </nav>
+          <!-- Navegação principal (sempre visível no topo) -->
+          <div class="module-sidebar__nav-section">
+            <h3 class="module-sidebar__title">Navegação</h3>
+            <nav class="module-sidebar__nav">
+              <a href="/modulos" class="module-sidebar__link">
+                ← Todos os Módulos
+              </a>
+              <a href="/guia-rapido" class="module-sidebar__link">
+                Guia de Consulta Rápida
+              </a>
+            </nav>
+          </div>
 
           {(prevModule || nextModule) && (
             <div class="module-sidebar__pagination">
@@ -106,6 +110,11 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
               )}
             </div>
           )}
+
+          <!-- Table of Contents (Desktop) - com scroll independente -->
+          <div class="module-sidebar__toc-wrapper">
+            <TableOfContents headings={headings} maxDepth={3} variant="desktop" />
+          </div>
         </div>
       </aside>
     </div>
@@ -128,6 +137,9 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
       )}
     </nav>
   </article>
+
+  <!-- Table of Contents Mobile (FAB) - fora do article para evitar contexto de stacking -->
+  <TableOfContents headings={headings} maxDepth={3} variant="mobile" />
 </BaseLayout>
 
 <style>
@@ -300,6 +312,13 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
 
   .module-content__body {
     min-width: 0;
+    max-width: 100%;
+  }
+
+  /* Prevenir overflow em todos os elementos de texto */
+  .module-content__body :global(*) {
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   /* Estilos do conteúdo Markdown */
@@ -349,11 +368,12 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
   .module-content__body :global(li) {
     margin-bottom: var(--space-xs);
     line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   /* Wrapper para tabelas com scroll horizontal */
   .module-content__body :global(table) {
-    width: 100%;
     border-collapse: collapse;
     margin: var(--space-md) 0;
     font-size: var(--text-sm);
@@ -361,6 +381,7 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
     display: block;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    max-width: 100%;
   }
 
   .module-content__body :global(thead) {
@@ -384,6 +405,8 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
   .module-content__body :global(td) {
     padding: var(--space-md);
     border-bottom: 1px solid var(--color-parchment);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .module-content__body :global(tbody tr:hover) {
@@ -428,32 +451,65 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
 
   .module-sidebar__sticky {
     position: sticky;
-    top: calc(60px + var(--space-xl));
+    top: calc(60px + var(--space-lg));
+    max-height: calc(100vh - 60px - var(--space-xl));
+    display: flex;
+    flex-direction: column;
+  }
+
+  .module-sidebar__toc-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    /* Scrollbar sutil */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-sepia-light) transparent;
+  }
+
+  .module-sidebar__toc-wrapper::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .module-sidebar__toc-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .module-sidebar__toc-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--color-sepia-light);
+    border-radius: 3px;
+  }
+
+  .module-sidebar__toc-wrapper::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-sepia-medium);
+  }
+
+  .module-sidebar__nav-section {
+    margin-bottom: var(--space-xs);
   }
 
   .module-sidebar__title {
     font-family: var(--font-headline);
-    font-size: var(--text-base);
+    font-size: var(--text-xs);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-sepia-medium);
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-xs);
   }
 
   .module-sidebar__nav {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-xl);
+    gap: var(--space-xs);
   }
 
   .module-sidebar__link {
     color: var(--color-blood-red);
     text-decoration: none;
-    padding: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
     background: var(--color-cream-dark);
     border-radius: var(--border-radius);
     transition: background var(--transition-fast);
+    font-size: var(--text-xs);
   }
 
   .module-sidebar__link:hover {
@@ -461,28 +517,30 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
   }
 
   .module-sidebar__pagination {
-    border-top: 1px solid var(--color-parchment);
-    padding-top: var(--space-lg);
+    padding-bottom: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-parchment);
   }
 
   .module-sidebar__pagination h4 {
     font-family: var(--font-headline);
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-sepia-medium);
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-xs);
   }
 
   .module-sidebar__prev,
   .module-sidebar__next {
     display: block;
     text-decoration: none;
-    padding: var(--space-sm);
-    margin-bottom: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
+    margin-bottom: var(--space-xs);
     border: 1px solid var(--color-parchment);
     border-radius: var(--border-radius);
     transition: border-color var(--transition-fast);
+    font-size: var(--text-xs);
   }
 
   .module-sidebar__prev:hover,
@@ -491,14 +549,17 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
   }
 
   .module-sidebar__pagination-label {
-    font-size: var(--text-xs);
+    font-size: 0.65rem;
     color: var(--text-secondary);
     display: block;
+    line-height: 1.2;
   }
 
   .module-sidebar__pagination-title {
     color: var(--color-blood-red);
     font-weight: 600;
+    font-size: var(--text-xs);
+    line-height: 1.3;
   }
 
   /* Navegação inferior */
@@ -558,6 +619,18 @@ const nextModule = currentIndex < sortedModules.length - 1 ? sortedModules[curre
 
     .module-sidebar__sticky {
       position: static;
+      max-height: none;
+      display: block;
+    }
+
+    .module-sidebar__toc-wrapper {
+      display: none;
+    }
+
+    .module-sidebar__pagination {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
     }
 
     .module-header__bacteria {

@@ -49,17 +49,20 @@ draft: false  # Set true to hide from public
 src/
 ├── pages/                          # File-based routing (Astro standard)
 │   ├── index.astro                # Homepage (/)
-│   ├── guia-rapido.astro          # Quick reference guide
+│   ├── guia-rapido.astro          # Quick reference guide (Content Collection)
 │   ├── sobre.astro                # About course/author
+│   ├── 404.astro                  # Custom 404 page (vintage cinema style)
 │   └── modulos/
 │       ├── index.astro            # Modules listing page
 │       └── [slug].astro           # Dynamic module detail pages
 ├── components/
 │   ├── PageHeader.astro           # Reusable header (variants: simple/dramatic)
 │   ├── ModuleCard.astro           # Module card component
+│   ├── TableOfContents.astro      # Section navigation (desktop sidebar + mobile FAB)
 │   └── BaseLayout.astro           # Global layout wrapper
 ├── content/
-│   └── modulos/                   # Course modules (Markdown files)
+│   ├── modulos/                   # Course modules (Markdown files)
+│   └── guia-rapido/               # Quick reference guide content (Markdown)
 ├── styles/
 │   └── vintage.css                # Global design system
 └── layouts/
@@ -79,6 +82,20 @@ src/
 ```
 
 **ModuleCard.astro** - Displays course modules in grid layout. All styles consolidated in `vintage.css` (removed from component to avoid duplication).
+
+**TableOfContents.astro** - Section navigation component with two variants:
+- `variant="desktop"` - Sticky sidebar with scrollable TOC, highlights active section on scroll
+- `variant="mobile"` - Floating Action Button (FAB) with overlay panel
+
+```astro
+<!-- Desktop: inside sidebar -->
+<TableOfContents headings={headings} maxDepth={3} variant="desktop" />
+
+<!-- Mobile: outside article to avoid stacking context issues -->
+<TableOfContents headings={headings} maxDepth={3} variant="mobile" />
+```
+
+The component automatically extracts headings from markdown content via `mod.render()` which returns `{ Content, headings }`.
 
 ### Styling Architecture
 
@@ -228,3 +245,11 @@ Module markdown files support:
 - Implemented security headers (vercel.json)
 - Standardized breakpoints with CSS variables
 - Improved alt text and added table scope attributes
+
+## Recent Features (December 2025)
+
+- **TableOfContents component** - Desktop sticky sidebar + mobile FAB with overlay for section navigation
+- **Guia de Consulta Rápida** - Comprehensive quick reference guide as Content Collection with full antimicrobial dosing tables
+- **Custom 404 page** - Vintage cinema-themed error page ("Você encontrou os bastidores secretos!")
+- **Auto-scroll TOC** - Active section automatically scrolls into view in the sidebar
+- **Improved mobile experience** - Responsive tables with horizontal scroll, optimized spacing

@@ -1,0 +1,292 @@
+---
+/**
+ * 404.astro
+ * Página de erro personalizada
+ * Estilo vintage "golden age of cinema"
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Página não encontrada" description="Erro 404 - Página não encontrada">
+  <div class="error-page">
+    <div class="error-content">
+      <!-- Película decorativa -->
+      <div class="film-strip" aria-hidden="true">
+        <div class="film-strip__holes"></div>
+      </div>
+
+      <div class="error-card">
+        <span class="error-code">404</span>
+
+        <h1 class="error-title">Você encontrou os bastidores secretos!</h1>
+
+        <p class="error-message">
+          Infelizmente, não há nada para ver aqui por enquanto.
+          O conteúdo do site ainda está em desenvolvimento.
+          Volte para a sessão principal.
+        </p>
+
+        <div class="error-actions">
+          <a href="/" class="error-btn error-btn--primary">
+            Voltar ao Início
+          </a>
+          <a href="/modulos" class="error-btn error-btn--secondary">
+            Ver Módulos
+          </a>
+        </div>
+      </div>
+
+      <!-- Película decorativa -->
+      <div class="film-strip film-strip--bottom" aria-hidden="true">
+        <div class="film-strip__holes"></div>
+      </div>
+    </div>
+
+    <!-- Projetor decorativo -->
+    <div class="projector-light" aria-hidden="true"></div>
+  </div>
+</BaseLayout>
+
+<style>
+  .error-page {
+    min-height: calc(100vh - 120px);
+    background: linear-gradient(
+      180deg,
+      var(--color-burgundy) 0%,
+      var(--color-sepia-dark) 50%,
+      var(--color-burgundy) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .error-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  /* Card principal */
+  .error-card {
+    background: var(--color-cream);
+    padding: var(--space-2xl) var(--space-xl);
+    text-align: center;
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+  }
+
+  /* Efeito de papel envelhecido */
+  .error-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(ellipse at top left, transparent 70%, rgba(139, 21, 56, 0.05) 100%),
+      radial-gradient(ellipse at bottom right, transparent 70%, rgba(74, 55, 40, 0.08) 100%);
+    pointer-events: none;
+  }
+
+  .error-code {
+    display: block;
+    font-family: var(--font-headline);
+    font-size: 8rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--color-blood-red);
+    line-height: 1;
+    margin-bottom: var(--space-md);
+    text-shadow:
+      3px 3px 0 var(--color-gold),
+      6px 6px 0 rgba(139, 21, 56, 0.2);
+    position: relative;
+  }
+
+  .error-title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-sepia-dark);
+    margin-bottom: var(--space-lg);
+    line-height: 1.3;
+    position: relative;
+  }
+
+  .error-message {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-xl);
+    font-style: italic;
+    position: relative;
+  }
+
+  .error-actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .error-btn {
+    font-family: var(--font-headline);
+    font-size: var(--text-sm);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: var(--space-md) var(--space-xl);
+    border-radius: 0;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .error-btn--primary {
+    background: var(--color-blood-red);
+    color: var(--color-cream);
+    border: 2px solid var(--color-blood-red);
+  }
+
+  .error-btn--primary:hover {
+    background: var(--color-burgundy);
+    border-color: var(--color-burgundy);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 21, 56, 0.4);
+  }
+
+  .error-btn--secondary {
+    background: transparent;
+    color: var(--color-blood-red);
+    border: 2px solid var(--color-gold);
+  }
+
+  .error-btn--secondary:hover {
+    background: var(--color-gold);
+    color: var(--color-burgundy);
+    transform: translateY(-2px);
+  }
+
+  /* Película de filme decorativa */
+  .film-strip {
+    height: 40px;
+    background: var(--color-sepia-dark);
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .film-strip--bottom {
+    margin-top: 0;
+  }
+
+  .film-strip__holes {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    height: 20px;
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 20px,
+      rgba(245, 230, 211, 0.3) 20px,
+      rgba(245, 230, 211, 0.3) 30px,
+      transparent 30px,
+      transparent 50px
+    );
+  }
+
+  /* Luz do projetor */
+  .projector-light {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(
+      ellipse at top,
+      rgba(245, 230, 211, 0.08) 0%,
+      rgba(245, 230, 211, 0.03) 30%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .error-page {
+      padding: var(--space-lg) var(--space-md);
+    }
+
+    .error-card {
+      padding: var(--space-xl) var(--space-lg);
+    }
+
+    .error-code {
+      font-size: 5rem;
+    }
+
+    .error-title {
+      font-size: var(--text-xl);
+    }
+
+    .error-message {
+      font-size: var(--text-base);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .error-page {
+      padding: var(--space-md) var(--space-sm);
+    }
+
+    .error-card {
+      padding: var(--space-lg) var(--space-md);
+    }
+
+    .error-code {
+      font-size: 4rem;
+      text-shadow:
+        2px 2px 0 var(--color-gold),
+        4px 4px 0 rgba(139, 21, 56, 0.2);
+    }
+
+    .error-title {
+      font-size: var(--text-lg);
+    }
+
+    .error-message {
+      font-size: var(--text-sm);
+    }
+
+    .error-actions {
+      flex-direction: column;
+    }
+
+    .error-btn {
+      width: 100%;
+      text-align: center;
+    }
+
+    .film-strip {
+      height: 30px;
+    }
+
+    .film-strip__holes {
+      height: 15px;
+    }
+  }
+</style>

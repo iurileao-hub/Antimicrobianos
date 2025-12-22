@@ -325,13 +325,21 @@ O uso criterioso das penicilinas, respeitando indicações precisas e evitando u
 
 ## 8. Referências
 
-1. AMERICAN ACADEMY OF PEDIATRICS. *Red Book: 2024-2027 Report of the Committee on Infectious Diseases*. 33. ed. Itasca, IL: American Academy of Pediatrics, 2024.
+1. AMERICAN ACADEMY OF PEDIATRICS. *Red Book: 2024-2027 Report of the Committee on Infectious Diseases*. 33. ed. Itasca, IL: American Academy of Pediatrics, 2024. Disponível em: <https://publications.aap.org/redbook>
 
-2. BRADLEY, J. S. et al. The Management of Community-Acquired Pneumonia in Infants and Children Older Than 3 Months of Age: Clinical Practice Guidelines by the Pediatric Infectious Diseases Society and the Infectious Diseases Society of America. *Clinical Infectious Diseases*, v. 53, n. 7, p. e25-e76, 2011.
+2. BRADLEY, J. S. et al. The Management of Community-Acquired Pneumonia in Infants and Children Older Than 3 Months of Age: Clinical Practice Guidelines by the Pediatric Infectious Diseases Society and the Infectious Diseases Society of America. *Clinical Infectious Diseases*, v. 53, n. 7, p. e25-e76, 2011. Disponível em: <https://academic.oup.com/cid/article/53/7/e25/424286>
 
 3. GILBERT, D. N. et al. *The Sanford Guide to Antimicrobial Therapy 2024*. 54. ed. Sperryville, VA: Antimicrobial Therapy Inc., 2024.
 
-4. SOCIEDADE BRASILEIRA DE PEDIATRIA. Departamento Científico de Infectologia. *Antimicrobianos na Prática Clínica Pediátrica: Guia Prático*. 4. ed. Rio de Janeiro: SBP, 2022.
+4. KIMBERLIN, D. W. et al. Guidance on Management of Asymptomatic Neonates Born to Women with Active Genital Herpes Lesions. *Pediatrics*, v. 131, n. 2, p. e635-e646, 2013.
+
+5. LIEBERTHAL, A. S. et al. The Diagnosis and Management of Acute Otitis Media. *Pediatrics*, v. 131, n. 3, p. e964-e999, 2013. Disponível em: <https://publications.aap.org/pediatrics/article/131/3/e964/30912>
+
+6. SOCIEDADE BRASILEIRA DE PEDIATRIA. Departamento Científico de Infectologia. *Antimicrobianos na Prática Clínica Pediátrica: Guia Prático*. 4. ed. Rio de Janeiro: SBP, 2022. Disponível em: <https://www.sbp.com.br/publicacoes/>
+
+7. SHULMAN, S. T. et al. Clinical Practice Guideline for the Diagnosis and Management of Group A Streptococcal Pharyngitis: 2012 Update by the Infectious Diseases Society of America. *Clinical Infectious Diseases*, v. 55, n. 10, p. e86-e102, 2012. Disponível em: <https://academic.oup.com/cid/article/55/10/e86/321183>
+
+8. WALD, E. R. et al. Clinical Practice Guideline for the Diagnosis and Management of Acute Bacterial Sinusitis in Children Aged 1 to 18 Years. *Pediatrics*, v. 132, n. 2, p. e364-e381, 2013. Disponível em: <https://publications.aap.org/pediatrics/article/132/2/e364/31402>
 
 ---
 

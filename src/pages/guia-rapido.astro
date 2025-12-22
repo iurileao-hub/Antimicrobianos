@@ -3,628 +3,244 @@
  * guia-rapido.astro
  * Página do Guia de Consulta Rápida
  * Referência prática ao lado do leito
+ * Conteúdo carregado via Content Collection
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import { getEntry } from 'astro:content';
+
+const guia = await getEntry('guia-rapido', 'index');
+const { Content, headings } = await guia.render();
 ---
 
-<BaseLayout title="Guia de Consulta Rápida" description="Guia de consulta rápida de antimicrobianos em pediatria - doses, regimes e alertas">
-  <div class="guide-page">
+<BaseLayout title={guia.data.title} description={guia.data.description}>
+  <article class="guide-page">
     <PageHeader
-      title="Guia de Consulta Rápida"
-      subtitle="Antimicrobianos em Pediatria — Referência ao Lado do Leito"
+      title={guia.data.title}
+      subtitle={guia.data.subtitle}
     />
 
-    <!-- Princípios -->
-    <section class="guide-section paper-card">
-      <h2>Antes de Prescrever, Pergunte-se:</h2>
-      <ol class="guide-checklist">
-        <li>Há evidência de infecção bacteriana?</li>
-        <li>Coletei culturas antes de iniciar?</li>
-        <li>Escolhi o espectro mais estreito possível?</li>
-        <li>A dose e o intervalo estão otimizados?</li>
-        <li>Posso fazer descalonamento após resultados?</li>
-        <li>Qual a duração mínima eficaz?</li>
-      </ol>
-    </section>
+    <!-- Conteúdo com sidebar -->
+    <div class="guide-layout">
+      <div class="guide-content">
+        <Content />
 
-    <!-- Navegação rápida -->
-    <nav class="guide-nav">
-      <h2>Ir para:</h2>
-      <div class="guide-nav__links">
-        <a href="#respiratorias" class="guide-nav__link">Respiratórias</a>
-        <a href="#snc" class="guide-nav__link">SNC</a>
-        <a href="#pele" class="guide-nav__link">Pele e Partes Moles</a>
-        <a href="#itu" class="guide-nav__link">ITU</a>
-        <a href="#osteoarticular" class="guide-nav__link">Osteoarticular</a>
-        <a href="#intra-abdominal" class="guide-nav__link">Intra-abdominal</a>
-        <a href="#sepse" class="guide-nav__link">Sepse</a>
-        <a href="#neonatal" class="guide-nav__link">Neonatal</a>
-      </div>
-    </nav>
-
-    <!-- Infecções Respiratórias -->
-    <section class="guide-section" id="respiratorias">
-      <h2>Infecções Respiratórias</h2>
-
-      <div class="table-container">
-        <table class="table-vintage">
-          <thead>
-            <tr>
-              <th scope="col">Infecção</th>
-              <th scope="col">Patógenos</th>
-              <th scope="col">1ª Escolha</th>
-              <th scope="col">Alternativa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Faringoamigdalite</strong></td>
-              <td><em>S. pyogenes</em></td>
-              <td>Amoxicilina 50 mg/kg/dia 12/12h VO 10d</td>
-              <td>Pen. Benzatina DU IM</td>
-            </tr>
-            <tr>
-              <td><strong>OMA não complicada</strong></td>
-              <td><em>S. pneumoniae</em>, <em>H. influenzae</em></td>
-              <td>Amoxicilina 80-90 mg/kg/dia 12/12h VO 10d</td>
-              <td>Amox-Clav</td>
-            </tr>
-            <tr>
-              <td><strong>Sinusite aguda</strong></td>
-              <td><em>S. pneumoniae</em>, <em>H. influenzae</em></td>
-              <td>Amoxicilina 80-90 mg/kg/dia 12/12h VO 10-14d</td>
-              <td>Amox-Clav</td>
-            </tr>
-            <tr>
-              <td><strong>Pneumonia típica (ambulatorial)</strong></td>
-              <td><em>S. pneumoniae</em></td>
-              <td>Amoxicilina 80-90 mg/kg/dia 8/8h VO 7-10d</td>
-              <td>Amox-Clav</td>
-            </tr>
-            <tr>
-              <td><strong>Pneumonia típica (hospitalar)</strong></td>
-              <td><em>S. pneumoniae</em>, <em>S. aureus</em></td>
-              <td>Penicilina Cristalina ou Ampicilina IV</td>
-              <td>Ceftriaxona 50-75 mg/kg/dia 24/24h IV</td>
-            </tr>
-            <tr>
-              <td><strong>Pneumonia atípica</strong></td>
-              <td><em>Mycoplasma</em>, <em>Chlamydia</em></td>
-              <td>Azitromicina 10mg D1 + 5mg D2-5 VO</td>
-              <td>Claritromicina 15 mg/kg/dia 12/12h</td>
-            </tr>
-            <tr class="row-highlight">
-              <td><strong>Pneumonia MRSA</strong></td>
-              <td>MRSA</td>
-              <td>Vancomicina 60 mg/kg/dia 6/6h IV</td>
-              <td>Linezolida ou Ceftarolina</td>
-            </tr>
-            <tr>
-              <td><strong>Coqueluche</strong></td>
-              <td><em>B. pertussis</em></td>
-              <td>Azitromicina 10mg D1 + 5mg D2-5 VO 5d</td>
-              <td>Claritromicina 15 mg/kg/dia 12/12h 7d</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Infecções do SNC -->
-    <section class="guide-section" id="snc">
-      <h2>Infecções do Sistema Nervoso Central</h2>
-
-      <div class="alert alert--warning">
-        <strong>Meningite bacteriana:</strong> Iniciar antibiótico em até 1 hora após suspeita clínica.
-        Não aguardar punção lombar se houver contraindicação ou demora.
+        <footer class="guide-footer">
+          <p><strong>Fonte:</strong> Curso de Antimicrobianos — HRT</p>
+          <p><strong>Última atualização:</strong> {guia.data.lastUpdated}</p>
+          <p><em>Consultar texto de referência dos módulos para informações completas.</em></p>
+        </footer>
       </div>
 
-      <div class="table-container">
-        <table class="table-vintage">
-          <thead>
-            <tr>
-              <th scope="col">Infecção</th>
-              <th scope="col">Patógenos</th>
-              <th scope="col">1ª Escolha</th>
-              <th scope="col">Alternativa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Meningite (>3 meses)</strong></td>
-              <td><em>S. pneumoniae</em>, <em>N. meningitidis</em></td>
-              <td>Ceftriaxona 100 mg/kg/dia + Vancomicina 60 mg/kg/dia</td>
-              <td>Cefotaxima + Vancomicina</td>
-            </tr>
-            <tr>
-              <td><strong>Meningite neonatal</strong></td>
-              <td><em>S. agalactiae</em>, <em>E. coli</em>, <em>Listeria</em></td>
-              <td>Ampicilina + Cefotaxima</td>
-              <td>Ampicilina + Gentamicina</td>
-            </tr>
-            <tr>
-              <td><strong>Meningite por <em>Listeria</em></strong></td>
-              <td><em>L. monocytogenes</em></td>
-              <td>Ampicilina 300-400 mg/kg/dia 6/6h IV 21d</td>
-              <td>—</td>
-            </tr>
-            <tr class="row-highlight">
-              <td><strong>Meningite por Gram-negativo</strong></td>
-              <td>Enterobactérias</td>
-              <td>Meropenem 120 mg/kg/dia 8/8h IV</td>
-              <td>Ceftazidima 150 mg/kg/dia 8/8h</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+      <!-- Sidebar com navegação -->
+      <aside class="guide-sidebar">
+        <div class="guide-sidebar__sticky">
+          <!-- Navegação principal -->
+          <div class="guide-sidebar__nav-section">
+            <h3 class="guide-sidebar__title">Navegação</h3>
+            <nav class="guide-sidebar__nav">
+              <a href="/" class="guide-sidebar__link">
+                ← Página Inicial
+              </a>
+              <a href="/modulos" class="guide-sidebar__link">
+                Módulos do Curso
+              </a>
+              <a href="/sobre" class="guide-sidebar__link">
+                Sobre o Curso
+              </a>
+            </nav>
+          </div>
 
-    <!-- Infecções de Pele -->
-    <section class="guide-section" id="pele">
-      <h2>Infecções de Pele e Partes Moles</h2>
-
-      <div class="table-container">
-        <table class="table-vintage">
-          <thead>
-            <tr>
-              <th scope="col">Infecção</th>
-              <th scope="col">Patógenos</th>
-              <th scope="col">1ª Escolha</th>
-              <th scope="col">Alternativa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Impetigo</strong></td>
-              <td><em>S. aureus</em>, <em>S. pyogenes</em></td>
-              <td>Cefalexina 50 mg/kg/dia 6/6h VO 7d</td>
-              <td>Amox-Clav</td>
-            </tr>
-            <tr>
-              <td><strong>Celulite/Erisipela (MSSA)</strong></td>
-              <td>MSSA, <em>S. pyogenes</em></td>
-              <td>Cefalexina 50-100 mg/kg/dia 6/6h VO</td>
-              <td>Cefazolina IV</td>
-            </tr>
-            <tr class="row-highlight">
-              <td><strong>Celulite (CA-MRSA)</strong></td>
-              <td>CA-MRSA</td>
-              <td>Clindamicina 30-40 mg/kg/dia 8/8h VO</td>
-              <td>SMX-TMP</td>
-            </tr>
-            <tr>
-              <td><strong>Celulite grave</strong></td>
-              <td>MSSA, MRSA</td>
-              <td>Oxacilina 150-200 mg/kg/dia 4/4h IV</td>
-              <td>Vancomicina</td>
-            </tr>
-            <tr>
-              <td><strong>Mordeduras</strong></td>
-              <td>Polimicrobiana</td>
-              <td>Amox-Clav 50 mg/kg/dia 8/8h VO</td>
-              <td>Ampicilina-Sulbactam IV</td>
-            </tr>
-            <tr class="row-highlight">
-              <td><strong>Fasciíte necrotizante</strong></td>
-              <td><em>S. pyogenes</em>, polimicrobiana</td>
-              <td>Pipe-Tazo + Clindamicina</td>
-              <td>Meropenem + Clindamicina</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="alert alert--info">
-        <strong>Clindamicina:</strong> Inibe produção de toxinas. Associar a beta-lactâmico em infecções
-        graves por Streptococcus/Staphylococcus.
-      </div>
-    </section>
-
-    <!-- ITU -->
-    <section class="guide-section" id="itu">
-      <h2>Infecções do Trato Urinário</h2>
-
-      <div class="table-container">
-        <table class="table-vintage">
-          <thead>
-            <tr>
-              <th scope="col">Infecção</th>
-              <th scope="col">Patógenos</th>
-              <th scope="col">1ª Escolha</th>
-              <th scope="col">Alternativa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>ITU não complicada</strong></td>
-              <td><em>E. coli</em></td>
-              <td>Cefalexina 50-100 mg/kg/dia 6/6h VO 7d</td>
-              <td>Cefuroxima</td>
-            </tr>
-            <tr>
-              <td><strong>Pielonefrite</strong></td>
-              <td><em>E. coli</em>, <em>Klebsiella</em></td>
-              <td>Ceftriaxona 50-75 mg/kg/dia 24/24h IV</td>
-              <td>Cefotaxima</td>
-            </tr>
-            <tr class="row-highlight">
-              <td><strong>ITU por ESBL</strong></td>
-              <td>Enterobactérias ESBL</td>
-              <td>Meropenem 60 mg/kg/dia 8/8h IV</td>
-              <td>Ceftazidima-Avibactam</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Osteoarticular -->
-    <section class="guide-section" id="osteoarticular">
-      <h2>Infecções Osteoarticulares</h2>
-
-      <div class="table-container">
-        <table class="table-vintage">
-          <thead>
-            <tr>
-              <th scope="col">Infecção</th>
-              <th scope="col">Patógenos</th>
-              <th scope="col">1ª Escolha</th>
-              <th scope="col">Duração</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Osteomielite (MSSA)</strong></td>
-              <td>MSSA</td>
-              <td>Oxacilina ou Cefazolina IV → Cefalexina VO</td>
-              <td>4-6 semanas</td>
-            </tr>
-            <tr>
-              <td><strong>Osteomielite (MRSA)</strong></td>
-              <td>MRSA</td>
-              <td>Vancomicina IV → Clindamicina ou Linezolida VO</td>
-              <td>4-6 semanas</td>
-            </tr>
-            <tr>
-              <td><strong>Artrite séptica</strong></td>
-              <td>MSSA, <em>S. pyogenes</em></td>
-              <td>Oxacilina ou Cefazolina IV</td>
-              <td>3-4 semanas</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Intra-abdominal -->
-    <section class="guide-section" id="intra-abdominal">
-      <h2>Infecções Intra-abdominais</h2>
-
-      <div class="table-container">
-        <table class="table-vintage">
-          <thead>
-            <tr>
-              <th scope="col">Infecção</th>
-              <th scope="col">Patógenos</th>
-              <th scope="col">1ª Escolha</th>
-              <th scope="col">Alternativa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Apendicite complicada</strong></td>
-              <td>Enterobactérias, anaeróbios</td>
-              <td>Pipe-Tazo 300-400 mg/kg/dia 6/6h IV</td>
-              <td>Meropenem</td>
-            </tr>
-            <tr>
-              <td><strong>Peritonite secundária</strong></td>
-              <td>Polimicrobiana</td>
-              <td>Ampicilina-Sulbactam ou Pipe-Tazo</td>
-              <td>Meropenem</td>
-            </tr>
-            <tr>
-              <td><strong>Colite por <em>C. difficile</em></strong></td>
-              <td><em>C. difficile</em></td>
-              <td>Vancomicina 40 mg/kg/dia 6/6h VO</td>
-              <td>Metronidazol (casos leves)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Sepse -->
-    <section class="guide-section" id="sepse">
-      <h2>Sepse e Neutropenia Febril</h2>
-
-      <div class="alert alert--danger">
-        <strong>Sepse:</strong> Antibiótico em até 1 hora. A cada hora de atraso, mortalidade aumenta.
-      </div>
-
-      <div class="table-container">
-        <table class="table-vintage">
-          <thead>
-            <tr>
-              <th scope="col">Situação</th>
-              <th scope="col">Patógenos</th>
-              <th scope="col">1ª Escolha</th>
-              <th scope="col">Alternativa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Sepse comunitária</strong></td>
-              <td>Variável</td>
-              <td>Ceftriaxona 75-100 mg/kg/dia</td>
-              <td>Cefotaxima</td>
-            </tr>
-            <tr>
-              <td><strong>Sepse hospitalar</strong></td>
-              <td>Gram-negativos, MRSA</td>
-              <td>Meropenem ± Vancomicina</td>
-              <td>Pipe-Tazo ± Vancomicina</td>
-            </tr>
-            <tr class="row-highlight">
-              <td><strong>Neutropenia febril</strong></td>
-              <td>Gram-negativos, <em>Pseudomonas</em></td>
-              <td>Cefepima 150 mg/kg/dia 8/8h IV</td>
-              <td>Pipe-Tazo ou Meropenem</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Neonatal -->
-    <section class="guide-section" id="neonatal">
-      <h2>Infecções Neonatais</h2>
-
-      <div class="alert alert--warning">
-        <strong>Ceftriaxona:</strong> CONTRAINDICADA em neonatos &lt;28 dias.
-        NUNCA administrar com soluções contendo cálcio.
-      </div>
-
-      <div class="table-container">
-        <table class="table-vintage">
-          <thead>
-            <tr>
-              <th scope="col">Situação</th>
-              <th scope="col">Patógenos</th>
-              <th scope="col">1ª Escolha</th>
-              <th scope="col">Duração</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Sepse precoce (&lt;72h)</strong></td>
-              <td><em>S. agalactiae</em>, <em>E. coli</em></td>
-              <td>Ampicilina + Gentamicina</td>
-              <td>7-10 dias</td>
-            </tr>
-            <tr>
-              <td><strong>Sepse tardia (&gt;72h)</strong></td>
-              <td>SCN, <em>S. aureus</em>, Gram-neg</td>
-              <td>Oxacilina + Amicacina ou Cefotaxima</td>
-              <td>10-14 dias</td>
-            </tr>
-            <tr>
-              <td><strong>Meningite neonatal</strong></td>
-              <td><em>S. agalactiae</em>, <em>E. coli</em></td>
-              <td>Ampicilina + Cefotaxima</td>
-              <td>14-21 dias</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Alertas Críticos -->
-    <section class="guide-section guide-section--alerts">
-      <h2>Alertas Críticos</h2>
-
-      <div class="alerts-grid">
-        <div class="alert alert--danger">
-          <h3>Daptomicina</h3>
-          <p><strong>NUNCA usar para pneumonia</strong> — inativada pelo surfactante pulmonar.</p>
+          <!-- Table of Contents (Desktop) - com scroll independente -->
+          <div class="guide-sidebar__toc-wrapper">
+            <TableOfContents headings={headings} maxDepth={3} variant="desktop" />
+          </div>
         </div>
+      </aside>
+    </div>
+  </article>
 
-        <div class="alert alert--warning">
-          <h3>Vancomicina</h3>
-          <p>Monitorização de nível sérico obrigatória. Alvo AUC: 400-600.</p>
-        </div>
-
-        <div class="alert alert--warning">
-          <h3>Linezolida</h3>
-          <p>Mielossupressão em uso &gt;2 semanas. Hemograma semanal.</p>
-        </div>
-
-        <div class="alert alert--info">
-          <h3>Rifampicina</h3>
-          <p>NUNCA em monoterapia (exceto profilaxia). Potente indutor do CYP450.</p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="guide-footer">
-      <p><strong>Fonte:</strong> Curso de Antimicrobianos — HRT</p>
-      <p><strong>Última atualização:</strong> Dezembro 2025</p>
-      <p><em>Consultar texto de referência dos módulos para informações completas.</em></p>
-    </footer>
-  </div>
+  <!-- Table of Contents Mobile (FAB) - fora do article para evitar contexto de stacking -->
+  <TableOfContents headings={headings} maxDepth={3} variant="mobile" />
 </BaseLayout>
 
 <style>
   .guide-page {
     background: var(--color-cream);
+  }
+
+  /* Layout com sidebar */
+  .guide-layout {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: var(--space-xl);
+    max-width: 1100px;
+    margin: 0 auto;
     padding: var(--space-xl) var(--space-lg);
   }
 
-  .guide-header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto var(--space-xl);
-    padding-bottom: var(--space-lg);
-    border-bottom: 2px solid var(--color-parchment);
+  /* Container do conteúdo markdown */
+  .guide-content {
+    min-width: 0;
+    max-width: 100%;
   }
 
-  .guide-header h1 {
-    font-size: var(--text-4xl);
-    color: var(--color-blood-red);
-    margin-bottom: var(--space-md);
+  /* Prevenir overflow em todos os elementos */
+  .guide-content :global(*) {
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
-  .guide-header__subtitle {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: var(--text-xl);
-    color: var(--text-secondary);
-  }
-
-  /* Seções */
-  .guide-section {
-    max-width: 1000px;
-    margin: 0 auto var(--space-xl);
-    padding: var(--space-lg);
-  }
-
-  .guide-section h2 {
+  /* Headings */
+  .guide-content :global(h2) {
     font-family: var(--font-display);
     font-size: var(--text-2xl);
     color: var(--color-blood-red);
-    margin-bottom: var(--space-lg);
+    margin: var(--space-2xl) 0 var(--space-lg);
     padding-bottom: var(--space-sm);
     border-bottom: 2px solid var(--color-gold);
   }
 
-  /* Checklist */
-  .guide-checklist {
-    list-style: none;
-    padding: 0;
+  .guide-content :global(h2:first-child) {
+    margin-top: 0;
   }
 
-  .guide-checklist li {
-    padding: var(--space-sm) var(--space-md);
-    padding-left: var(--space-2xl);
-    margin-bottom: var(--space-sm);
-    background: var(--color-cream-dark);
-    border-radius: var(--border-radius);
-    position: relative;
+  .guide-content :global(h3) {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--color-sepia-dark);
+    margin: var(--space-xl) 0 var(--space-md);
   }
 
-  .guide-checklist li::before {
-    content: '?';
-    position: absolute;
-    left: var(--space-md);
-    font-weight: bold;
-    color: var(--color-blood-red);
-  }
-
-  /* Navegação */
-  .guide-nav {
-    max-width: 1000px;
-    margin: 0 auto var(--space-xl);
-    padding: var(--space-md);
-    background: var(--color-sepia-dark);
-    border-radius: var(--border-radius);
-  }
-
-  .guide-nav h2 {
+  .guide-content :global(h4) {
     font-family: var(--font-headline);
-    font-size: var(--text-base);
-    color: var(--color-gold);
+    font-size: var(--text-lg);
+    color: var(--color-sepia-medium);
+    margin: var(--space-lg) 0 var(--space-sm);
+  }
+
+  /* Parágrafos */
+  .guide-content :global(p) {
     margin-bottom: var(--space-md);
+    line-height: 1.7;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
-  .guide-nav__links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
+  /* Listas */
+  .guide-content :global(ul),
+  .guide-content :global(ol) {
+    margin-bottom: var(--space-lg);
+    padding-left: var(--space-xl);
   }
 
-  .guide-nav__link {
-    font-family: var(--font-headline);
-    font-size: var(--text-sm);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--text-light);
-    text-decoration: none;
-    padding: var(--space-sm) var(--space-md);
-    background: rgba(245, 230, 211, 0.1);
-    border-radius: var(--border-radius);
-    transition: background var(--transition-fast);
-  }
-
-  .guide-nav__link:hover {
-    background: rgba(201, 162, 39, 0.3);
+  .guide-content :global(li) {
+    margin-bottom: var(--space-sm);
+    line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   /* Tabelas */
-  .table-container {
-    overflow-x: auto;
+  .guide-content :global(table) {
+    border-collapse: collapse;
     margin: var(--space-lg) 0;
-  }
-
-  .table-vintage {
-    min-width: 600px;
-  }
-
-  .table-vintage .row-highlight {
-    background: rgba(139, 21, 56, 0.08);
-  }
-
-  .table-vintage .row-highlight:hover {
-    background: rgba(139, 21, 56, 0.12);
-  }
-
-  /* Alertas */
-  .alert {
-    padding: var(--space-lg);
+    font-size: var(--text-sm);
+    background: var(--color-cream-light);
     border-radius: var(--border-radius);
-    margin: var(--space-lg) 0;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .alert h3 {
+  .guide-content :global(thead) {
+    background: linear-gradient(180deg, var(--color-burgundy) 0%, var(--color-sepia-dark) 100%);
+  }
+
+  .guide-content :global(th) {
+    color: var(--text-light);
     font-family: var(--font-headline);
-    font-size: var(--text-lg);
+    font-weight: 600;
+    text-align: left;
+    padding: var(--space-md);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: var(--text-xs);
+  }
+
+  .guide-content :global(td) {
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--color-parchment);
+    vertical-align: top;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .guide-content :global(tbody tr:hover) {
+    background: rgba(139, 21, 56, 0.05);
+  }
+
+  .guide-content :global(tbody tr:last-child td) {
+    border-bottom: none;
+  }
+
+  /* Código inline */
+  .guide-content :global(code) {
+    background: var(--color-cream-dark);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: var(--font-mono);
+    word-break: break-word;
+  }
+
+  /* Blockquotes */
+  .guide-content :global(blockquote) {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md) var(--space-lg);
+    background: rgba(201, 162, 39, 0.1);
+    border-left: 4px solid var(--color-gold);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  }
+
+  .guide-content :global(blockquote p) {
     margin-bottom: var(--space-sm);
   }
 
-  .alert p {
-    margin: 0;
+  .guide-content :global(blockquote p:last-child) {
+    margin-bottom: 0;
   }
 
-  .alert--danger {
-    background: rgba(139, 21, 56, 0.1);
-    border-left: 4px solid var(--color-blood-red);
+  .guide-content :global(blockquote strong) {
+    color: var(--color-blood-red);
   }
 
-  .alert--warning {
-    background: rgba(201, 162, 39, 0.15);
-    border-left: 4px solid var(--color-gold);
+  /* Horizontal rules */
+  .guide-content :global(hr) {
+    border: none;
+    border-top: 2px solid var(--color-parchment);
+    margin: var(--space-2xl) 0;
   }
 
-  .alert--info {
-    background: rgba(74, 55, 40, 0.1);
-    border-left: 4px solid var(--color-sepia-medium);
+  /* Enfatizados */
+  .guide-content :global(strong) {
+    color: var(--color-blood-red);
+    font-weight: 600;
   }
 
-  .alerts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-lg);
-  }
-
-  .alerts-grid .alert {
-    margin: 0;
+  .guide-content :global(em) {
+    font-style: italic;
+    color: var(--text-secondary);
   }
 
   /* Footer */
   .guide-footer {
-    max-width: 1000px;
-    margin: var(--space-2xl) auto 0;
-    padding: var(--space-xl);
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-xl);
     text-align: center;
     border-top: 2px solid var(--color-parchment);
     color: var(--text-secondary);
@@ -635,50 +251,147 @@ import PageHeader from '../components/PageHeader.astro';
     margin-bottom: var(--space-sm);
   }
 
+  /* Sidebar */
+  .guide-sidebar {
+    font-size: var(--text-sm);
+  }
+
+  .guide-sidebar__sticky {
+    position: sticky;
+    top: calc(60px + var(--space-lg));
+    max-height: calc(100vh - 60px - var(--space-xl));
+    display: flex;
+    flex-direction: column;
+  }
+
+  .guide-sidebar__toc-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-sepia-light) transparent;
+  }
+
+  .guide-sidebar__toc-wrapper::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .guide-sidebar__toc-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .guide-sidebar__toc-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--color-sepia-light);
+    border-radius: 3px;
+  }
+
+  .guide-sidebar__toc-wrapper::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-sepia-medium);
+  }
+
+  .guide-sidebar__nav-section {
+    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-parchment);
+  }
+
+  .guide-sidebar__title {
+    font-family: var(--font-headline);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-sepia-medium);
+    margin-bottom: var(--space-xs);
+  }
+
+  .guide-sidebar__nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .guide-sidebar__link {
+    color: var(--color-blood-red);
+    text-decoration: none;
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-cream-dark);
+    border-radius: var(--border-radius);
+    transition: background var(--transition-fast);
+    font-size: var(--text-xs);
+  }
+
+  .guide-sidebar__link:hover {
+    background: var(--color-parchment);
+  }
+
   /* Responsividade */
-  @media (max-width: 768px) {
-    .guide-page {
+  @media (max-width: 968px) {
+    .guide-layout {
+      grid-template-columns: 1fr;
       padding: var(--space-lg) var(--space-md);
     }
 
-    .guide-header h1 {
-      font-size: var(--text-3xl);
+    .guide-sidebar {
+      order: -1;
     }
 
-    .guide-section {
-      padding: var(--space-md);
+    .guide-sidebar__sticky {
+      position: static;
+      max-height: none;
+      display: block;
     }
 
-    .table-vintage {
+    .guide-sidebar__toc-wrapper {
+      display: none;
+    }
+
+    .guide-sidebar__nav-section {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .guide-layout {
+      padding: var(--space-lg) var(--space-md);
+    }
+
+    .guide-content :global(h2) {
+      font-size: var(--text-xl);
+    }
+
+    .guide-content :global(h3) {
+      font-size: var(--text-lg);
+    }
+
+    .guide-content :global(table) {
       font-size: var(--text-xs);
     }
 
-    .table-vintage th,
-    .table-vintage td {
+    .guide-content :global(th),
+    .guide-content :global(td) {
       padding: var(--space-sm);
     }
   }
 
   @media (max-width: 480px) {
-    .guide-page {
+    .guide-layout {
       padding: var(--space-md) var(--space-sm);
     }
 
-    .guide-header h1 {
-      font-size: var(--text-2xl);
+    .guide-content :global(h2) {
+      font-size: var(--text-lg);
+      margin: var(--space-xl) 0 var(--space-md);
     }
 
-    .guide-header__subtitle {
+    .guide-content :global(h3) {
       font-size: var(--text-base);
     }
 
-    .guide-section {
-      padding: var(--space-sm);
-      margin-bottom: var(--space-md);
-    }
-
-    .guide-section h2 {
-      font-size: var(--text-xl);
+    .guide-content :global(ul),
+    .guide-content :global(ol) {
+      padding-left: var(--space-lg);
     }
   }
 </style>

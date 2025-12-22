@@ -21,6 +21,17 @@ const modulosCollection = defineCollection({
   }),
 });
 
+const guiaRapidoCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string(),
+    description: z.string(),
+    lastUpdated: z.string(),
+  }),
+});
+
 export const collections = {
   modulos: modulosCollection,
+  'guia-rapido': guiaRapidoCollection,
 };

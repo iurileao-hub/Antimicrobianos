@@ -57,15 +57,18 @@ src/
 │   ├── index.astro          # Homepage
 │   ├── guia-rapido.astro    # Guia de consulta rápida
 │   ├── sobre.astro          # Sobre o curso
+│   ├── 404.astro            # Página de erro customizada
 │   └── modulos/
 │       ├── index.astro      # Listagem de módulos
 │       └── [slug].astro     # Páginas dinâmicas dos módulos
 ├── components/
 │   ├── PageHeader.astro     # Header reutilizável
 │   ├── ModuleCard.astro     # Card de módulo
+│   ├── TableOfContents.astro # Navegação por seções (desktop + mobile)
 │   └── BaseLayout.astro     # Layout global
 ├── content/
-│   └── modulos/             # Markdown dos módulos
+│   ├── modulos/             # Markdown dos módulos
+│   └── guia-rapido/         # Conteúdo do guia de consulta rápida
 ├── layouts/
 │   └── BaseLayout.astro     # Master layout
 └── styles/

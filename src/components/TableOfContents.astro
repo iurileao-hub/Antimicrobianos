@@ -1,0 +1,520 @@
+---
+/**
+ * TableOfContents.astro
+ * Componente de navegação por seções do módulo
+ * variant="desktop" → Sidebar fixa
+ * variant="mobile" → Botão flutuante com overlay
+ */
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+  maxDepth?: number;
+  variant?: 'desktop' | 'mobile';
+}
+
+const { headings, maxDepth = 3, variant = 'desktop' } = Astro.props;
+
+// Filtra apenas h2 e h3 (depth 2 e 3)
+const filteredHeadings = headings.filter(h => h.depth >= 2 && h.depth <= maxDepth);
+---
+
+{variant === 'desktop' && (
+  <nav class="toc" aria-label="Índice do módulo">
+    <h3 class="toc__title">Neste Módulo</h3>
+    <ul class="toc__list">
+      {filteredHeadings.map((heading) => (
+        <li class={`toc__item toc__item--depth-${heading.depth}`}>
+          <a href={`#${heading.slug}`} class="toc__link" data-toc-link data-heading={heading.slug}>
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+{variant === 'mobile' && (
+  <div class="toc-mobile" id="toc-mobile-container">
+    <button
+      class="toc-mobile__fab"
+      id="toc-fab"
+      type="button"
+      aria-label="Abrir índice do módulo"
+      aria-expanded="false"
+      aria-controls="toc-overlay"
+    >
+      <svg class="toc-mobile__icon toc-mobile__icon--menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+      <svg class="toc-mobile__icon toc-mobile__icon--close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div id="toc-overlay" class="toc-mobile__overlay" aria-hidden="true">
+      <div class="toc-mobile__panel">
+        <div class="toc-mobile__header">
+          <h3 class="toc-mobile__title">Índice do Módulo</h3>
+        </div>
+        <nav aria-label="Índice do módulo">
+          <ul class="toc-mobile__list">
+            {filteredHeadings.map((heading) => (
+              <li class={`toc-mobile__item toc-mobile__item--depth-${heading.depth}`}>
+                <a href={`#${heading.slug}`} class="toc-mobile__link" data-toc-link data-heading={heading.slug}>
+                  {heading.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+)}
+
+<style>
+  /* ========================================
+     DESKTOP: Sidebar fixa
+     ======================================== */
+  .toc {
+    display: block;
+  }
+
+  .toc__title {
+    font-family: var(--font-headline);
+    font-size: var(--text-sm);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-sepia-medium);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--color-parchment);
+  }
+
+  .toc__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .toc__item {
+    margin-bottom: var(--space-xs);
+  }
+
+  .toc__item--depth-3 {
+    padding-left: var(--space-md);
+  }
+
+  .toc__link {
+    display: block;
+    padding: var(--space-xs) var(--space-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    line-height: 1.4;
+    border-left: 2px solid transparent;
+    transition: all 0.15s ease;
+  }
+
+  .toc__link:hover {
+    color: var(--color-blood-red);
+    background: var(--color-cream-dark);
+  }
+
+  .toc__link.is-active {
+    color: var(--color-blood-red);
+    border-left-color: var(--color-blood-red);
+    background: rgba(139, 21, 56, 0.05);
+    font-weight: 600;
+  }
+
+  /* Esconder desktop TOC no mobile */
+  @media (max-width: 968px) {
+    .toc {
+      display: none;
+    }
+  }
+
+  /* ========================================
+     MOBILE: FAB + Overlay
+     ======================================== */
+  .toc-mobile {
+    display: none;
+  }
+
+  @media (max-width: 968px) {
+    .toc-mobile {
+      display: block;
+    }
+  }
+
+  .toc-mobile__fab {
+    position: fixed;
+    bottom: 24px;
+    right: 16px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #8B1538;
+    color: #F5E6D3;
+    border: none;
+    box-shadow: 0 4px 12px rgba(139, 21, 56, 0.4);
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .toc-mobile__fab:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(139, 21, 56, 0.5);
+  }
+
+  .toc-mobile__fab:focus {
+    outline: 2px solid #C9A227;
+    outline-offset: 2px;
+  }
+
+  .toc-mobile__fab:active {
+    transform: scale(0.95);
+  }
+
+  .toc-mobile__icon--close {
+    display: none;
+  }
+
+  .toc-mobile__fab.is-active .toc-mobile__icon--menu {
+    display: none;
+  }
+
+  .toc-mobile__fab.is-active .toc-mobile__icon--close {
+    display: block;
+  }
+
+  /* Overlay */
+  .toc-mobile__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+
+  .toc-mobile__overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Panel */
+  .toc-mobile__panel {
+    position: fixed;
+    bottom: 96px;
+    right: 16px;
+    left: 16px;
+    max-width: 400px;
+    max-height: 60vh;
+    margin-left: auto;
+    background: #F5E6D3;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    z-index: 1000;
+  }
+
+  .toc-mobile__overlay.is-open .toc-mobile__panel {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  .toc-mobile__header {
+    padding: 16px 20px;
+    background: linear-gradient(180deg, #3D0A18 0%, #2A1810 100%);
+  }
+
+  .toc-mobile__title {
+    font-family: var(--font-display, 'Playfair Display', serif);
+    font-size: 1.125rem;
+    color: #F5E6D3;
+    margin: 0;
+  }
+
+  .toc-mobile__list {
+    list-style: none;
+    padding: 8px 0;
+    margin: 0;
+    max-height: calc(60vh - 60px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .toc-mobile__item {
+    border-bottom: 1px solid #E8D5C4;
+  }
+
+  .toc-mobile__item:last-child {
+    border-bottom: none;
+  }
+
+  .toc-mobile__item--depth-3 {
+    background: #EDE0D0;
+  }
+
+  .toc-mobile__link {
+    display: block;
+    padding: 14px 20px;
+    color: #1A0F0A;
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.4;
+    transition: background 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .toc-mobile__item--depth-3 .toc-mobile__link {
+    padding-left: 36px;
+    font-size: 0.875rem;
+    color: #5C4A3D;
+  }
+
+  .toc-mobile__link:hover,
+  .toc-mobile__link:focus {
+    background: #E8D5C4;
+    color: #8B1538;
+  }
+
+  .toc-mobile__link:active {
+    background: #DCC9B8;
+  }
+
+  .toc-mobile__link.is-active {
+    color: #8B1538;
+    font-weight: 600;
+  }
+
+  /* Smaller screens */
+  @media (max-width: 480px) {
+    .toc-mobile__fab {
+      bottom: 16px;
+      right: 12px;
+      width: 52px;
+      height: 52px;
+    }
+
+    .toc-mobile__panel {
+      right: 12px;
+      left: 12px;
+      bottom: 80px;
+    }
+
+    .toc-mobile__link {
+      padding: 12px 16px;
+    }
+
+    .toc-mobile__item--depth-3 .toc-mobile__link {
+      padding-left: 28px;
+    }
+  }
+</style>
+
+{variant === 'mobile' && (
+<script>
+  // Script executado no cliente - apenas para versão mobile
+  (function() {
+    // Evita inicialização dupla
+    if (window.__tocInitialized) return;
+    window.__tocInitialized = true;
+
+    function initTOC() {
+      const fab = document.getElementById('toc-fab');
+      const overlay = document.getElementById('toc-overlay');
+
+      if (!fab || !overlay) {
+        console.log('TOC: FAB ou overlay não encontrado');
+        return;
+      }
+
+      console.log('TOC: Inicializando...');
+
+      function openTOC() {
+        overlay.classList.add('is-open');
+        fab.classList.add('is-active');
+        fab.setAttribute('aria-expanded', 'true');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeTOC() {
+        overlay.classList.remove('is-open');
+        fab.classList.remove('is-active');
+        fab.setAttribute('aria-expanded', 'false');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      // Toggle do menu - usando addEventListener apenas uma vez
+      fab.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (overlay.classList.contains('is-open')) {
+          closeTOC();
+        } else {
+          openTOC();
+        }
+      };
+
+      // Fecha ao clicar no overlay (fora do panel)
+      overlay.onclick = function(e) {
+        if (e.target === overlay) {
+          closeTOC();
+        }
+      };
+
+      // Links do menu mobile
+      const mobileLinks = overlay.querySelectorAll('.toc-mobile__link');
+      mobileLinks.forEach(function(link) {
+        link.onclick = function(e) {
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          closeTOC();
+
+          setTimeout(function() {
+            if (href) {
+              // Usa getElementById para suportar IDs com acentos
+              const id = href.replace('#', '');
+              const target = document.getElementById(id);
+              if (target) {
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: 'smooth'
+                });
+
+                history.pushState(null, '', href);
+              }
+            }
+          }, 150);
+        };
+      });
+
+      // Fecha com Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+          closeTOC();
+        }
+      });
+
+      // Links do desktop TOC - scroll suave
+      const desktopLinks = document.querySelectorAll('.toc__link');
+      desktopLinks.forEach(function(link) {
+        link.onclick = function(e) {
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          if (href) {
+            // Usa getElementById para suportar IDs com acentos
+            const id = href.replace('#', '');
+            const target = document.getElementById(id);
+            if (target) {
+              const headerOffset = 80;
+              const elementPosition = target.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+
+              history.pushState(null, '', href);
+            }
+          }
+        };
+      });
+
+      // Highlight do item ativo baseado no scroll
+      const allTocLinks = document.querySelectorAll('[data-toc-link]');
+      // Suporta tanto páginas de módulo quanto guia-rapido
+      const tocWrapper = document.querySelector('.module-sidebar__toc-wrapper, .guide-sidebar__toc-wrapper');
+
+      function updateActiveLink() {
+        // Busca headings em ambos os containers (módulos e guia-rapido)
+        const headings = document.querySelectorAll('.module-content__body h2[id], .module-content__body h3[id], .guide-content h2[id], .guide-content h3[id]');
+        const scrollPosition = window.scrollY + 120;
+        let currentHeading = '';
+
+        headings.forEach(function(heading) {
+          if (scrollPosition >= heading.offsetTop) {
+            currentHeading = heading.id;
+          }
+        });
+
+        allTocLinks.forEach(function(link) {
+          if (link.getAttribute('data-heading') === currentHeading) {
+            link.classList.add('is-active');
+
+            // Auto-scroll do TOC para manter item ativo visível
+            if (tocWrapper && link.closest('.toc')) {
+              const linkRect = link.getBoundingClientRect();
+              const wrapperRect = tocWrapper.getBoundingClientRect();
+
+              // Se o link está acima ou abaixo da área visível do wrapper
+              if (linkRect.top < wrapperRect.top || linkRect.bottom > wrapperRect.bottom) {
+                link.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'center'
+                });
+              }
+            }
+          } else {
+            link.classList.remove('is-active');
+          }
+        });
+      }
+
+      // Throttle scroll
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            updateActiveLink();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      updateActiveLink();
+      console.log('TOC: Inicializado com sucesso');
+    }
+
+    // Inicializa quando DOM estiver pronto
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initTOC);
+    } else {
+      initTOC();
+    }
+  })();
+</script>
+)}
