@@ -458,14 +458,14 @@ import PageHeader from '../components/PageHeader.astro';
 <style>
   .guide-page {
     background: var(--color-cream);
-    padding: var(--space-2xl) var(--space-xl);
+    padding: var(--space-xl) var(--space-lg);
   }
 
   .guide-header {
     text-align: center;
     max-width: 800px;
-    margin: 0 auto var(--space-2xl);
-    padding-bottom: var(--space-xl);
+    margin: 0 auto var(--space-xl);
+    padding-bottom: var(--space-lg);
     border-bottom: 2px solid var(--color-parchment);
   }
 
@@ -485,8 +485,8 @@ import PageHeader from '../components/PageHeader.astro';
   /* Seções */
   .guide-section {
     max-width: 1000px;
-    margin: 0 auto var(--space-2xl);
-    padding: var(--space-xl);
+    margin: 0 auto var(--space-xl);
+    padding: var(--space-lg);
   }
 
   .guide-section h2 {
@@ -524,8 +524,8 @@ import PageHeader from '../components/PageHeader.astro';
   /* Navegação */
   .guide-nav {
     max-width: 1000px;
-    margin: 0 auto var(--space-2xl);
-    padding: var(--space-lg);
+    margin: 0 auto var(--space-xl);
+    padding: var(--space-md);
     background: var(--color-sepia-dark);
     border-radius: var(--border-radius);
   }
@@ -637,12 +637,16 @@ import PageHeader from '../components/PageHeader.astro';
 
   /* Responsividade */
   @media (max-width: 768px) {
+    .guide-page {
+      padding: var(--space-lg) var(--space-md);
+    }
+
     .guide-header h1 {
       font-size: var(--text-3xl);
     }
 
     .guide-section {
-      padding: var(--space-lg);
+      padding: var(--space-md);
     }
 
     .table-vintage {
@@ -652,6 +656,29 @@ import PageHeader from '../components/PageHeader.astro';
     .table-vintage th,
     .table-vintage td {
       padding: var(--space-sm);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .guide-page {
+      padding: var(--space-md) var(--space-sm);
+    }
+
+    .guide-header h1 {
+      font-size: var(--text-2xl);
+    }
+
+    .guide-header__subtitle {
+      font-size: var(--text-base);
+    }
+
+    .guide-section {
+      padding: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+
+    .guide-section h2 {
+      font-size: var(--text-xl);
     }
   }
 </style>

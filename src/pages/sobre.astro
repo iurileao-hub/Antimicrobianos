@@ -104,9 +104,9 @@ import PageHeader from '../components/PageHeader.astro';
   .about-header {
     text-align: center;
     max-width: 800px;
-    margin: 0 auto var(--space-2xl);
-    padding-top: var(--space-2xl);
-    padding-bottom: var(--space-xl);
+    margin: 0 auto var(--space-xl);
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-lg);
     border-bottom: 2px solid var(--color-parchment);
   }
 
@@ -119,15 +119,15 @@ import PageHeader from '../components/PageHeader.astro';
   .about-content {
     max-width: 800px;
     margin: 0 auto;
-    padding: var(--space-2xl) var(--space-xl);
+    padding: var(--space-xl) var(--space-lg);
   }
 
   .about-content h2 {
     font-family: var(--font-display);
     font-size: var(--text-2xl);
     color: var(--color-blood-red);
-    margin: var(--space-2xl) 0 var(--space-lg);
-    padding-bottom: var(--space-sm);
+    margin: var(--space-xl) 0 var(--space-md);
+    padding-bottom: var(--space-xs);
     border-bottom: 2px solid var(--color-gold);
   }
 
@@ -139,21 +139,21 @@ import PageHeader from '../components/PageHeader.astro';
     font-family: var(--font-headline);
     font-size: var(--text-xl);
     color: var(--text-primary);
-    margin: var(--space-xl) 0 var(--space-md);
+    margin: var(--space-lg) 0 var(--space-sm);
   }
 
   .about-content p {
-    margin-bottom: var(--space-md);
-    line-height: 1.8;
+    margin-bottom: var(--space-sm);
+    line-height: 1.7;
   }
 
   .about-content ul {
-    margin-bottom: var(--space-lg);
-    padding-left: var(--space-xl);
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-lg);
   }
 
   .about-content li {
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs);
     line-height: 1.6;
   }
 
@@ -199,18 +199,44 @@ import PageHeader from '../components/PageHeader.astro';
     margin-bottom: var(--space-sm);
   }
 
+  @media (max-width: 768px) {
+    .about-header {
+      padding-top: var(--space-lg);
+      padding-bottom: var(--space-md);
+    }
+
+    .about-header h1 {
+      font-size: var(--text-3xl);
+    }
+
+    .about-content {
+      padding: var(--space-lg) var(--space-md);
+    }
+  }
+
   @media (max-width: 600px) {
     .author-card {
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
-
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
+    .about-header {
+      padding-top: var(--space-md);
+    }
+
     .about-header h1 {
-      font-size: var(--text-3xl);
+      font-size: var(--text-2xl);
+    }
+
+    .about-content {
+      padding: var(--space-md) var(--space-sm);
+    }
+
+    .about-content h2 {
+      font-size: var(--text-xl);
     }
   }
 

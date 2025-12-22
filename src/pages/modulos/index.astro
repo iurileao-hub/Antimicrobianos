@@ -58,21 +58,30 @@ const sortedModules = modules.sort((a, b) => a.data.order - b.data.order);
 
   .modules-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-xl);
-    max-width: 1200px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+    max-width: 1100px;
     margin: 0 auto;
-    padding: var(--space-3xl) var(--space-xl);
+    padding: var(--space-2xl) var(--space-lg);
   }
 
   .modules-page__cta {
     text-align: center;
-    margin-top: var(--space-3xl);
+    margin-top: var(--space-xl);
+    padding-bottom: var(--space-2xl);
   }
 
   @media (max-width: 768px) {
     .modules-grid {
       grid-template-columns: 1fr;
+      padding: var(--space-xl) var(--space-md);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .modules-grid {
+      padding: var(--space-lg) var(--space-sm);
+      gap: var(--space-md);
     }
   }
 </style>
