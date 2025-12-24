@@ -8,12 +8,18 @@
 
 Este é um site educacional desenvolvido para capacitar médicos residentes em Pediatria do **Hospital Regional de Taguatinga (HRT)** no uso racional e baseado em evidências de antimicrobianos na prática clínica pediátrica.
 
-O curso é dividido em **4 módulos** que cobrem as principais classes de antibióticos:
+O curso é dividido em **4 módulos completos** que cobrem as principais classes de antibióticos, cada um com slides de apresentação em PDF:
 
-1. **Penicilinas** - A fundação da antibioticoterapia
-2. **Cefalosporinas** - Cobertura progressiva por gerações
-3. **Oxacilina, Macrolídeos, Clindamicina e Rifampicina** - Arsenal contra estafilococos e atípicos
-4. **Glicopeptídeos e Última Geração** - Reservas estratégicas para multiresistência
+1. **Penicilinas** - A fundação da antibioticoterapia ([slides](https://atbpedhrt.vercel.app/slides/modulo-1-penicilinas.pdf))
+2. **Cefalosporinas** - Cobertura progressiva por gerações ([slides](https://atbpedhrt.vercel.app/slides/modulo-2-cefalosporinas.pdf))
+3. **Oxacilina, Macrolídeos, Clindamicina e Rifampicina** - Arsenal contra estafilococos e atípicos ([slides](https://atbpedhrt.vercel.app/slides/modulo-3-oxacilina-macrolideos.pdf))
+4. **Glicopeptídeos e Última Geração** - Reservas estratégicas para multiresistência ([slides](https://atbpedhrt.vercel.app/slides/modulo-4-glicopeptideos-ultima-geracao.pdf))
+
+### Recursos Adicionais
+
+- **Guia de Consulta Rápida** - Tabelas de doses, regimes terapêuticos e alertas práticos para consulta durante plantões
+- **Navegação por Seções** - TableOfContents interativo (desktop: sidebar; mobile: FAB flutuante)
+- **Página 404 Customizada** - Estilo vintage "golden age of cinema"
 
 ### Objetivos de Aprendizagem
 
@@ -21,6 +27,7 @@ O curso é dividido em **4 módulos** que cobrem as principais classes de antibi
 - ✅ Ajustar doses e durações conforme idade, peso e função orgânica
 - ✅ Reconhecer e manejar efeitos adversos
 - ✅ Aplicar princípios de gerenciamento de antimicrobianos (*stewardship*)
+- ✅ Consultar rapidamente doses e regimes durante a prática clínica
 
 ## 🚀 Stack Técnico
 
@@ -53,26 +60,32 @@ npm run preview
 
 ```
 src/
-├── pages/                    # Rotas (file-based routing)
-│   ├── index.astro          # Homepage
-│   ├── guia-rapido.astro    # Guia de consulta rápida
-│   ├── sobre.astro          # Sobre o curso
-│   ├── 404.astro            # Página de erro customizada
+├── pages/                          # Rotas (file-based routing)
+│   ├── index.astro                # Homepage
+│   ├── guia-rapido.astro          # Guia de consulta rápida
+│   ├── sobre.astro                # Sobre o curso
+│   ├── 404.astro                  # Página de erro customizada
 │   └── modulos/
-│       ├── index.astro      # Listagem de módulos
-│       └── [slug].astro     # Páginas dinâmicas dos módulos
+│       ├── index.astro            # Listagem de módulos
+│       └── [slug].astro           # Páginas dinâmicas dos módulos
 ├── components/
-│   ├── PageHeader.astro     # Header reutilizável
-│   ├── ModuleCard.astro     # Card de módulo
-│   ├── TableOfContents.astro # Navegação por seções (desktop + mobile)
-│   └── BaseLayout.astro     # Layout global
+│   ├── PageHeader.astro           # Header reutilizável (variants: simple/dramatic)
+│   ├── ModuleCard.astro           # Card de módulo com link para slides
+│   ├── TableOfContents.astro      # Navegação por seções (desktop: sidebar / mobile: FAB)
+│   └── BaseLayout.astro           # Layout global
 ├── content/
-│   ├── modulos/             # Markdown dos módulos
-│   └── guia-rapido/         # Conteúdo do guia de consulta rápida
+│   ├── config.ts                  # Schemas Zod para Content Collections
+│   ├── modulos/                   # Markdown dos 4 módulos completos
+│   │   ├── penicilinas.md
+│   │   ├── cefalosporinas.md
+│   │   ├── antiestafilococcicas-macrolideos.md
+│   │   └── glicopeptideos-ultima-geracao.md
+│   └── guia-rapido/               # Conteúdo do guia de consulta rápida
+│       └── index.md
 ├── layouts/
-│   └── BaseLayout.astro     # Master layout
+│   └── BaseLayout.astro           # Master layout
 └── styles/
-    └── vintage.css          # Sistema de design global
+    └── vintage.css                # Sistema de design global (vintage cinema 1930-1950)
 ```
 
 ### Adicionar Novo Módulo
@@ -106,9 +119,16 @@ draft: false
 
 ### Adicionar Slides de Apresentação
 
-1. Colocar PDF em `public/slides/modulo-N-name.pdf`
-2. Adicionar campo ao frontmatter: `slidesUrl: "/slides/modulo-N-name.pdf"`
-3. Botão aparece automaticamente na página do módulo
+1. Colocar PDF em `public/slides/modulo-N-nome.pdf` (seguir padrão de nomenclatura)
+2. Adicionar campo ao frontmatter: `slidesUrl: "/slides/modulo-N-nome.pdf"`
+3. Botão "📥 Baixar Slides" aparece automaticamente na página do módulo
+
+**Padrão de nomenclatura dos PDFs:**
+
+- `modulo-1-penicilinas.pdf`
+- `modulo-2-cefalosporinas.pdf`
+- `modulo-3-oxacilina-macrolideos.pdf`
+- `modulo-4-glicopeptideos-ultima-geracao.pdf`
 
 ## 🎨 Design & Estilo
 
@@ -159,6 +179,8 @@ Segurança configurada em `vercel.json`:
 
 ## 📝 Conteúdo
 
+### Módulos (4 completos)
+
 Cada módulo contém:
 
 - **Introdução histórica** - Contexto da classe de fármacos
@@ -168,6 +190,24 @@ Cada módulo contém:
 - **Posologia** - Doses por idade/peso, ajustes especiais
 - **Efeitos colaterais** - Reações adversas e monitorização
 - **Referências** - Baseado em evidências científicas
+- **Slides PDF** - Apresentações para download
+
+### Guia de Consulta Rápida
+
+O Guia de Consulta Rápida oferece acesso imediato a:
+
+- Tabelas de doses pediátricas por antimicrobiano
+- Regimes terapêuticos para infecções comuns
+- Ajustes para insuficiência renal/hepática
+- Alertas de segurança e interações medicamentosas
+- Navegação por seções com TableOfContents integrado
+
+### Componentes Interativos
+
+- **TableOfContents Desktop** - Sidebar fixa com scroll independente e highlight automático da seção ativa
+- **TableOfContents Mobile** - FAB (Floating Action Button) com overlay e menu colapsável
+- **ModuleCard** - Cards clicáveis com botão de download de slides quando disponível
+- **404 Customizada** - Página de erro temática "bastidores do cinema"
 
 ## 🚢 Deploy
 
@@ -200,10 +240,33 @@ git push origin main
 Hospital Regional de Taguatinga (HRT)
 Brasília, DF
 
+## 📊 Status do Projeto
+
+✅ **Projeto Concluído** - Todos os recursos implementados e funcionando
+
+### Features Implementadas
+
+- ✅ 4 módulos completos com conteúdo extenso
+- ✅ Slides PDF para todos os módulos (padronizados)
+- ✅ Guia de Consulta Rápida com Content Collection
+- ✅ Navegação por seções (TableOfContents desktop + mobile)
+- ✅ Página 404 customizada com estilo vintage
+- ✅ Sistema de design consolidado (vintage.css)
+- ✅ Acessibilidade WCAG AA
+- ✅ Performance otimizada (static generation)
+- ✅ Segurança (CSP, headers configurados)
+- ✅ Deploy automatizado no Vercel
+
+### Arquivos de Documentação
+
+- [README.md](README.md) - Este arquivo (visão geral do projeto)
+- [CLAUDE.md](CLAUDE.md) - Instruções detalhadas para Claude Code
+- [public/slides/](public/slides/) - PDFs dos 4 módulos
+
 ## 📄 Licença
 
 Material educacional. Desenvolvido para fins didáticos no programa de residência em pediatria.
 
 ---
 
-**Última atualização:** Dezembro 2025 | **Versão:** 1.0
+**Última atualização:** Dezembro 2025 | **Versão:** 1.0.0 (Completo)

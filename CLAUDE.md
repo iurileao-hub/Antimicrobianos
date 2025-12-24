@@ -166,9 +166,22 @@ Configured in `vercel.json`:
 
 Slide presentations are referenced via `slidesUrl` in frontmatter. To add:
 
-1. Create PDF file: `public/slides/modulo-N-name.pdf`
-2. Add to frontmatter: `slidesUrl: "/slides/modulo-N-name.pdf"`
-3. Button automatically appears on module page
+1. Create PDF file: `public/slides/modulo-N-nome.pdf` (follow naming convention)
+2. Add to frontmatter: `slidesUrl: "/slides/modulo-N-nome.pdf"`
+3. Button "📥 Baixar Slides" automatically appears on module page
+
+**IMPORTANT - Naming Convention for Slides:**
+
+All PDF files MUST follow this pattern: `modulo-[NUMBER]-[slug].pdf`
+
+Examples:
+
+- `modulo-1-penicilinas.pdf`
+- `modulo-2-cefalosporinas.pdf`
+- `modulo-3-oxacilina-macrolideos.pdf`
+- `modulo-4-glicopeptideos-ultima-geracao.pdf`
+
+This ensures consistency and makes files easy to locate. Do NOT use spaces or special characters other than hyphens.
 
 ### Breakpoint Variables
 
@@ -246,10 +259,56 @@ Module markdown files support:
 - Standardized breakpoints with CSS variables
 - Improved alt text and added table scope attributes
 
-## Recent Features (December 2025)
+## Project Status (December 2025)
 
-- **TableOfContents component** - Desktop sticky sidebar + mobile FAB with overlay for section navigation
-- **Guia de Consulta Rápida** - Comprehensive quick reference guide as Content Collection with full antimicrobial dosing tables
-- **Custom 404 page** - Vintage cinema-themed error page ("Você encontrou os bastidores secretos!")
-- **Auto-scroll TOC** - Active section automatically scrolls into view in the sidebar
-- **Improved mobile experience** - Responsive tables with horizontal scroll, optimized spacing
+✅ **PROJETO CONCLUÍDO** - All modules and features implemented
+
+### Completed Modules
+
+All 4 modules complete with extensive content:
+
+1. **Penicilinas** - [penicilinas.md](src/content/modulos/penicilinas.md) + [slides](public/slides/modulo-1-penicilinas.pdf)
+2. **Cefalosporinas** - [cefalosporinas.md](src/content/modulos/cefalosporinas.md) + [slides](public/slides/modulo-2-cefalosporinas.pdf)
+3. **Oxacilina, Macrolídeos** - [antiestafilococcicas-macrolideos.md](src/content/modulos/antiestafilococcicas-macrolideos.md) + [slides](public/slides/modulo-3-oxacilina-macrolideos.pdf)
+4. **Glicopeptídeos e Última Geração** - [glicopeptideos-ultima-geracao.md](src/content/modulos/glicopeptideos-ultima-geracao.md) + [slides](public/slides/modulo-4-glicopeptideos-ultima-geracao.pdf)
+
+### Completed Features
+
+- ✅ **4 Módulos Completos** - Extensive content with pharmacology, indications, dosing, references
+- ✅ **Slides PDF** - All modules have presentation slides (standardized naming: `modulo-N-nome.pdf`)
+- ✅ **TableOfContents Component** - Desktop sticky sidebar + mobile FAB with overlay for section navigation
+- ✅ **Guia de Consulta Rápida** - Comprehensive quick reference guide as Content Collection with full antimicrobial dosing tables
+- ✅ **Custom 404 Page** - Vintage cinema-themed error page ("Você encontrou os bastidores secretos!")
+- ✅ **Auto-scroll TOC** - Active section automatically scrolls into view in the sidebar
+- ✅ **Improved Mobile Experience** - Responsive tables with horizontal scroll, optimized spacing
+- ✅ **Design System** - All styles consolidated in `vintage.css` (no duplication)
+- ✅ **Accessibility** - WCAG AA compliant (skip links, ARIA labels, focus styling)
+- ✅ **Security Headers** - CSP, X-Frame-Options, Permissions-Policy configured
+- ✅ **Performance** - Static generation, optimized caching, minimal dependencies
+
+### Content Structure
+
+Each module follows the same comprehensive structure:
+
+1. **Introdução** - Context and importance
+2. **Breve Histórico** - Discovery and development timeline
+3. **Características Farmacológicas** - Mechanism of action, pharmacokinetics, pharmacodynamics
+4. **Usos Clínicos** - Bacterial spectrum (sensitive/resistant), clinical indications, resistance patterns
+5. **Regimes Terapêuticos** - Pediatric dosing by age/weight, special populations (neonates, renal/hepatic insufficiency)
+6. **Efeitos Colaterais** - Adverse reactions, safety alerts, drug interactions, monitoring
+7. **Conclusão** - Key clinical points
+8. **Referências** - Evidence-based sources (AAP Red Book, Sanford Guide, IDSA guidelines)
+
+---
+
+## Documentation Files
+
+This project has comprehensive documentation:
+
+- **[README.md](README.md)** - General project overview, setup instructions, stack technical details
+- **[CLAUDE.md](CLAUDE.md)** - This file; detailed guidance for Claude Code on architecture and patterns
+- **[public/slides/](public/slides/)** - PDF presentation slides for all 4 modules
+
+---
+
+**Last Updated:** December 2025 | **Version:** 1.0.0 (Complete)
