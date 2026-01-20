@@ -9,6 +9,7 @@ drugs:
   - Azitromicina
   - Claritromicina
   - Clindamicina
+  - Gentamicina
   - Rifampicina
 bacteriaPlaceholder: "S. aureus"
 bacteriaImage: "/images/bacteria-mod3.png"
@@ -20,9 +21,9 @@ draft: false
 
 ## 1. Introdução
 
-Este módulo aborda seis antimicrobianos de classes distintas, mas frequentemente utilizados na prática pediátrica hospitalar: **oxacilina** (penicilina antiestafilocócica), **piperacilina-tazobactam** (penicilina de amplo espectro com inibidor de beta-lactamase), **azitromicina** e **claritromicina** (macrolídeos), **clindamicina** (lincosamida) e **rifampicina** (rifamicina).
+Este módulo aborda sete antimicrobianos de classes distintas, mas frequentemente utilizados na prática pediátrica hospitalar: **oxacilina** (penicilina antiestafilocócica), **piperacilina-tazobactam** (penicilina de amplo espectro com inibidor de beta-lactamase), **azitromicina** e **claritromicina** (macrolídeos), **clindamicina** (lincosamida), **gentamicina** (aminoglicosídeo) e **rifampicina** (rifamicina).
 
-Embora pertençam a classes farmacológicas diferentes, esses antimicrobianos compartilham importância clínica em situações específicas da pediatria: infecções estafilocócicas graves (oxacilina, clindamicina), infecções polimicrobianas e hospitalares (piperacilina-tazobactam), infecções respiratórias por patógenos atípicos (azitromicina, claritromicina), e como adjuvante em infecções por micobactérias e biofilmes (rifampicina).
+Embora pertençam a classes farmacológicas diferentes, esses antimicrobianos compartilham importância clínica em situações específicas da pediatria: infecções estafilocócicas graves (oxacilina, clindamicina), infecções polimicrobianas e hospitalares (piperacilina-tazobactam), infecções respiratórias por patógenos atípicos (azitromicina, claritromicina), sinergia em infecções graves e sepse neonatal (gentamicina), e como adjuvante em infecções por micobactérias e biofilmes (rifampicina).
 
 A compreensão das particularidades de cada fármaco permite ao residente selecionar o antimicrobiano mais adequado para cada situação clínica, otimizando eficácia e minimizando riscos.
 
@@ -46,6 +47,10 @@ Os macrolídeos têm origem na **eritromicina**, isolada de *Streptomyces erythr
 
 Derivada da **lincomicina** (isolada de *Streptomyces lincolnensis* em 1962), a **clindamicina** foi introduzida em 1968, oferecendo melhor absorção oral e maior potência antimicrobiana.
 
+### Gentamicina
+
+A **gentamicina** foi isolada de *Micromonospora purpurea* em 1963 por Weinstein e colaboradores. Foi o primeiro aminoglicosídeo de amplo espectro contra gram-negativos resistentes. Introduzida clinicamente em 1969, tornou-se fundamental no tratamento de infecções graves por bacilos gram-negativos e na sinergia com beta-lactâmicos para infecções por cocos gram-positivos (endocardite enterocócica e estafilocócica em prótese).
+
 ### Rifampicina
 
 Isolada de *Amycolatopsis rifamycinica* em 1957, a **rifampicina** foi introduzida clinicamente em 1968. Revolucionou o tratamento da tuberculose e permanece fundamental no manejo de infecções micobacterianas e estafilocócicas com biofilme.
@@ -63,6 +68,7 @@ Isolada de *Amycolatopsis rifamycinica* em 1957, a **rifampicina** foi introduzi
 | **Azitromicina** | Inibe síntese proteica (ligação à subunidade 50S ribossomal) | Bacteriostático* |
 | **Claritromicina** | Inibe síntese proteica (ligação à subunidade 50S ribossomal) | Bacteriostático* |
 | **Clindamicina** | Inibe síntese proteica (ligação à subunidade 50S ribossomal) | Bacteriostático* |
+| **Gentamicina** | Inibe síntese proteica (ligação irreversível à subunidade 30S ribossomal) | Bactericida |
 | **Rifampicina** | Inibe RNA polimerase DNA-dependente | Bactericida |
 
 *Azitromicina, claritromicina e clindamicina podem ser bactericidas em concentrações elevadas ou contra patógenos específicos.
@@ -76,22 +82,25 @@ Isolada de *Amycolatopsis rifamycinica* em 1957, a **rifampicina** foi introduzi
 | **Azitromicina** | Concentração-dependente + tempo | Dose única diária eficaz; acúmulo tecidual |
 | **Claritromicina** | Concentração-dependente + AUC/CIM | Dose 12/12h; menor acúmulo tecidual que azitromicina |
 | **Clindamicina** | Tempo-dependente + EPA* | Doses fracionadas; efeito pós-antibiótico permite intervalos maiores |
+| **Gentamicina** | Concentração-dependente (Cmax/CIM) + EPA prolongado | Dose única diária (ou estendida) otimiza eficácia e reduz toxicidade |
 | **Rifampicina** | Concentração-dependente (Cmax/CIM) | Dose única diária preferível |
 
 *EPA: Efeito pós-antibiótico
 
 ### 3.3 Farmacocinética Comparativa
 
-| Parâmetro | Oxacilina | Piperacilina-Tazobactam | Azitromicina | Claritromicina | Clindamicina | Rifampicina |
-|-----------|-----------|------------------------|--------------|----------------|--------------|-------------|
-| **Via** | IV | IV | VO, IV | VO | VO, IV | VO, IV |
-| **Biodisponibilidade oral** | - | - | 37% | 50-55% | 90% | >90% |
-| **Meia-vida sérica** | 0,5-1 h | 1 h | 40-68 h | 3-7 h | 2-4 h | 2-5 h |
-| **Meia-vida tecidual** | - | - | Dias (acúmulo) | Horas | - | - |
-| **Ligação proteica** | 94% | 30% | 7-50% | 65-75% | 90% | 80% |
-| **Penetração no LCR** | Baixa | Baixa | Baixa | Baixa | Baixa | Excelente |
-| **Metabolismo** | Hepático (parcial) | Mínimo | Hepático | Hepático (CYP3A4) | Hepático | Hepático (CYP450) |
-| **Excreção principal** | Renal | Renal | Biliar/Fecal | Renal (20-40%) + Biliar | Biliar/Renal | Biliar |
+| Parâmetro | Oxacilina | Piperacilina-Tazobactam | Azitromicina | Claritromicina | Clindamicina | Gentamicina | Rifampicina |
+|-----------|-----------|------------------------|--------------|----------------|--------------|-------------|-------------|
+| **Via** | IV | IV | VO, IV | VO | VO, IV | IV, IM | VO, IV |
+| **Biodisponibilidade oral** | - | - | 37% | 50-55% | 90% | - | >90% |
+| **Meia-vida sérica** | 0,5-1 h | 1 h | 40-68 h | 3-7 h | 2-4 h | 2-3 h | 2-5 h |
+| **Meia-vida tecidual** | - | - | Dias (acúmulo) | Horas | - | - | - |
+| **Ligação proteica** | 94% | 30% | 7-50% | 65-75% | 90% | <10% | 80% |
+| **Penetração no LCR** | Baixa | Baixa | Baixa | Baixa | Baixa | Baixa* | Excelente |
+| **Metabolismo** | Hepático (parcial) | Mínimo | Hepático | Hepático (CYP3A4) | Hepático | Mínimo | Hepático (CYP450) |
+| **Excreção principal** | Renal | Renal | Biliar/Fecal | Renal (20-40%) + Biliar | Biliar/Renal | Renal | Biliar |
+
+*Gentamicina: penetração no LCR baixa mesmo com meninges inflamadas; pode requerer administração intratecal em meningite.
 
 #### Destaques Farmacocinéticos
 
@@ -119,6 +128,14 @@ Isolada de *Amycolatopsis rifamycinica* em 1957, a **rifampicina** foi introduzi
 - Excelente penetração óssea (útil em osteomielite)
 - Boa concentração em abscessos
 - Inibe produção de toxinas estafilocócicas e estreptocócicas
+
+**Gentamicina:**
+
+- Efeito pós-antibiótico prolongado (permite dose única diária)
+- Acúmulo no córtex renal e ouvido interno (toxicidade)
+- Atividade bactericida rápida, concentração-dependente
+- Sinergia com beta-lactâmicos contra gram-positivos (penetração facilitada na parede)
+- Inativada em ambiente anaeróbio (não usar para anaeróbios)
 
 ---
 
@@ -230,6 +247,30 @@ Isolada de *Amycolatopsis rifamycinica* em 1957, a **rifampicina** foi introduzi
 - Cepas com gene *erm* podem desenvolver resistência durante tratamento
 - Teste D positivo: clindamicina deve ser evitada
 
+#### Gentamicina
+
+**Bactérias sensíveis:**
+
+- Enterobactérias (*E. coli*, *Klebsiella*, *Enterobacter*, *Proteus*, *Serratia*)
+- *Pseudomonas aeruginosa*
+- *Staphylococcus aureus* (MSSA e MRSA - em sinergia)
+- *Staphylococcus* coagulase-negativos (em sinergia)
+- *Enterococcus* spp. (em sinergia com ampicilina/vancomicina)
+- *Listeria monocytogenes* (em sinergia com ampicilina)
+
+**Bactérias resistentes:**
+
+- *Streptococcus* spp. (atividade intrínseca limitada)
+- Anaeróbios (inativação em ambiente anóxico)
+- *Stenotrophomonas maltophilia*
+- Patógenos atípicos (*Mycoplasma*, *Chlamydia*, *Legionella*)
+
+**Uso obrigatório em associação:**
+
+- Monoterapia raramente indicada
+- Sinergia com beta-lactâmicos é o principal uso clínico
+- Resistência por enzimas modificadoras de aminoglicosídeos (AMEs)
+
 #### Rifampicina
 
 **Bactérias sensíveis:**
@@ -262,7 +303,10 @@ Isolada de *Amycolatopsis rifamycinica* em 1957, a **rifampicina** foi introduzi
 | **Pneumonia atípica** | Azitromicina | Claritromicina |
 | **Coqueluche** | Azitromicina | Claritromicina |
 | **Osteomielite MSSA** | Oxacilina → Clindamicina (VO) | Cefazolina → Cefalexina |
+| **Sepse neonatal (empírico)** | Ampicilina + Gentamicina | Ampicilina + Cefotaxima |
+| **Endocardite enterocócica** | Ampicilina + Gentamicina | Vancomicina + Gentamicina |
 | **Endocardite MSSA (prótese)** | Oxacilina + Rifampicina + Gentamicina | - |
+| **Pielonefrite grave** | Ceftriaxona ± Gentamicina | Gentamicina (monoterapia curta) |
 | **Infecções com biofilme (cateter, prótese)** | ATB base + Rifampicina | - |
 | **Profilaxia meningocócica** | Rifampicina | Ceftriaxona |
 | **Profilaxia *H. influenzae* tipo b** | Rifampicina | - |
@@ -369,7 +413,30 @@ Isolada de *Amycolatopsis rifamycinica* em 1957, a **rifampicina** foi introduzi
 - Inibe síntese de toxinas bacterianas (TSS, fasciíte)
 - Associar a beta-lactâmico em infecções graves por Streptococcus/Staphylococcus
 
-### 5.6 Rifampicina
+### 5.6 Gentamicina
+
+| Indicação | Dose | Intervalo | Via | Duração |
+|-----------|------|-----------|-----|---------|
+| **Sinergia (endocardite, sepse grave)** | 3 mg/kg/dia | 8/8h | IV | Conforme patógeno |
+| **Infecções graves por Gram-negativos** | 5-7,5 mg/kg/dia | 24/24h (dose única diária) | IV | 7-14 dias |
+| **Sepse neonatal (com ampicilina)** | Ver tabela neonatal | Conforme IG/idade | IV | 7-14 dias |
+| **Pielonefrite grave** | 5-7,5 mg/kg/dia | 24/24h | IV | 7-10 dias |
+| **Endocardite enterocócica** | 3 mg/kg/dia | 8/8h | IV | 4-6 semanas |
+| **Endocardite MSSA (prótese)** | 3 mg/kg/dia | 8/8h | IV | 2 semanas (após início) |
+
+**Dose única diária (extended-interval dosing):**
+
+- Preferida para infecções por gram-negativos
+- Otimiza pico sérico (Cmax/CIM) e reduz toxicidade
+- Contraindicada em: endocardite, gestantes, grandes queimados, ascite volumosa
+
+**Monitorização obrigatória:**
+
+- **Vale (pré-dose):** <2 μg/mL (evitar acúmulo/toxicidade)
+- **Pico (30min pós-infusão):** 5-10 μg/mL (dose fracionada) ou 15-25 μg/mL (dose única diária)
+- Função renal antes e durante tratamento
+
+### 5.7 Rifampicina
 
 | Indicação | Dose | Intervalo | Via | Duração |
 |-----------|------|-----------|-----|---------|
@@ -386,7 +453,7 @@ Isolada de *Amycolatopsis rifamycinica* em 1957, a **rifampicina** foi introduzi
 
 **Regra de ouro:** NUNCA usar rifampicina como monoterapia (exceto profilaxia de contatos)
 
-### 5.7 Ajustes em Situações Especiais
+### 5.8 Ajustes em Situações Especiais
 
 #### Insuficiência Renal
 
@@ -397,9 +464,11 @@ Isolada de *Amycolatopsis rifamycinica* em 1957, a **rifampicina** foi introduzi
 | Azitromicina | Sem ajuste | Sem ajuste | Sem ajuste |
 | Claritromicina | Sem ajuste | Reduzir 50% | Reduzir 50% |
 | Clindamicina | Sem ajuste | Sem ajuste | Sem ajuste |
+| Gentamicina | Ajustar por nível sérico | Ajustar por nível sérico | Ajustar por nível sérico** |
 | Rifampicina | Sem ajuste | Sem ajuste | Sem ajuste* |
 
 *Evitar em insuficiência renal grave + insuficiência hepática
+**Gentamicina é nefrotóxica; monitorização rigorosa obrigatória; considerar alternativas se possível
 
 #### Insuficiência Hepática
 
@@ -410,6 +479,7 @@ Isolada de *Amycolatopsis rifamycinica* em 1957, a **rifampicina** foi introduzi
 | Azitromicina | Evitar em hepatopatia grave |
 | Claritromicina | Cautela; monitorar função hepática |
 | Clindamicina | Reduzir dose em hepatopatia grave |
+| Gentamicina | Sem ajuste específico (excreção renal) |
 | Rifampicina | Contraindicada em hepatopatia ativa; monitorar função hepática |
 
 #### Neonatos
@@ -422,6 +492,11 @@ Isolada de *Amycolatopsis rifamycinica* em 1957, a **rifampicina** foi introduzi
 | | ≥36 sem IG | 225-300 mg/kg/dia | 8/8h |
 | **Clindamicina** | ≤7 dias | 10-15 mg/kg/dia | 8/8h ou 12/12h |
 | | >7 dias | 15-20 mg/kg/dia | 6/6h ou 8/8h |
+| **Gentamicina** | ≤29 sem IG, 0-7 dias | 5 mg/kg/dose | 48/48h |
+| | ≤29 sem IG, 8-28 dias | 4 mg/kg/dose | 36/36h |
+| | 30-34 sem IG, 0-7 dias | 4,5 mg/kg/dose | 36/36h |
+| | 30-34 sem IG, ≥8 dias | 4 mg/kg/dose | 24/24h |
+| | ≥35 sem IG, qualquer idade | 4 mg/kg/dose | 24/24h |
 | **Azitromicina** | Coqueluche | 10 mg/kg/dia | 24/24h por 5 dias |
 
 ---
@@ -437,6 +512,7 @@ Isolada de *Amycolatopsis rifamycinica* em 1957, a **rifampicina** foi introduzi
 | **Azitromicina** | Diarreia, náuseas, dor abdominal | Prolongamento QT, hepatotoxicidade, colestase |
 | **Claritromicina** | Diarreia, náuseas, disgeusia (gosto metálico), cefaleia | Prolongamento QT, hepatotoxicidade, reações cutâneas graves |
 | **Clindamicina** | Diarreia (10-20%), exantema, elevação de transaminases | **Colite por *C. difficile*** (risco elevado), reações cutâneas graves |
+| **Gentamicina** | Nefrotoxicidade (geralmente reversível), elevação de creatinina | **Ototoxicidade** (coclear e vestibular, pode ser irreversível), bloqueio neuromuscular |
 | **Rifampicina** | Coloração alaranjada de fluidos, náuseas, hepatotoxicidade | Síndrome gripal (uso intermitente), trombocitopenia, insuficiência renal aguda |
 
 ### 6.2 Alertas de Segurança Específicos
@@ -460,6 +536,22 @@ Isolada de *Amycolatopsis rifamycinica* em 1957, a **rifampicina** foi introduzi
 - **Inibidor do CYP3A4:** pode elevar níveis de diversos fármacos
 - Interações importantes: midazolam, estatinas, carbamazepina, colchicina
 - Disgeusia (alteração do paladar) é frequente e pode afetar adesão
+
+**Gentamicina - nefrotoxicidade e ototoxicidade:**
+
+- **Nefrotoxicidade:** acúmulo no córtex renal; geralmente reversível com suspensão
+- Fatores de risco: uso prolongado (>7-10 dias), doses elevadas, desidratação, uso concomitante de outros nefrotóxicos (vancomicina, anfotericina, AINEs, contraste iodado)
+- **Ototoxicidade:** dano coclear (perda auditiva) e/ou vestibular (vertigem, ataxia)
+- Pode ser **irreversível** e ocorrer mesmo com níveis séricos adequados
+- Risco aumentado: uso prolongado, insuficiência renal, uso prévio de aminoglicosídeos
+- **Bloqueio neuromuscular:** raro, mas potencializado por bloqueadores neuromusculares, miastenia gravis, botulismo
+
+**Gentamicina - monitorização obrigatória:**
+
+- Dosar nível sérico antes da 3ª ou 4ª dose (steady-state)
+- **Vale:** <2 μg/mL (para evitar acúmulo e toxicidade)
+- **Pico:** 5-10 μg/mL (dose fracionada) ou 15-25 μg/mL (dose única diária)
+- Creatinina e ureia: antes do início e a cada 2-3 dias
 
 **Rifampicina - hepatotoxicidade:**
 
@@ -495,6 +587,10 @@ A rifampicina é potente indutor do citocromo P450 e reduz significativamente os
 | Associação | Interação | Conduta |
 |------------|-----------|---------|
 | Clindamicina + Bloqueadores neuromusculares | Potencialização do bloqueio | Cautela em anestesia |
+| Gentamicina + Vancomicina | Nefrotoxicidade aditiva | Monitorar função renal de perto |
+| Gentamicina + Anfotericina B | Nefrotoxicidade aditiva | Evitar se possível; hidratar |
+| Gentamicina + Diuréticos de alça | Ototoxicidade aumentada | Evitar furosemida concomitante |
+| Gentamicina + Bloqueadores neuromusculares | Potencialização do bloqueio | Cautela em anestesia |
 | Azitromicina + Fármacos que prolongam QT | Risco de arritmia | Evitar associação |
 | Claritromicina + Fármacos que prolongam QT | Risco de arritmia | Evitar associação |
 | Claritromicina + Estatinas | Rabdomiólise | Evitar ou suspender estatina |
@@ -510,13 +606,14 @@ A rifampicina é potente indutor do citocromo P450 e reduz significativamente os
 | **Azitromicina** | ECG em pacientes de risco cardíaco; função hepática se uso prolongado |
 | **Claritromicina** | ECG em pacientes de risco cardíaco; função hepática; função renal (ajustar se ClCr <30) |
 | **Clindamicina** | Sintomas gastrointestinais (diarreia); função hepática |
+| **Gentamicina** | **Níveis séricos** (vale e pico); função renal (creatinina a cada 2-3 dias); audiometria se uso prolongado |
 | **Rifampicina** | Função hepática (basal, 2-4 sem, depois mensal); hemograma; função renal |
 
 ---
 
 ## 7. Conclusão
 
-Este módulo abordou seis antimicrobianos de classes distintas, cada um com papel específico no arsenal terapêutico pediátrico:
+Este módulo abordou sete antimicrobianos de classes distintas, cada um com papel específico no arsenal terapêutico pediátrico:
 
 **Pontos-chave para a prática clínica:**
 
@@ -530,9 +627,11 @@ Este módulo abordou seis antimicrobianos de classes distintas, cada um com pape
 
 5. **Clindamicina:** Excelente opção para infecções de pele por CA-MRSA e como adjuvante em síndrome do choque tóxico (inibe toxinas); risco significativo de colite por *C. difficile*.
 
-6. **Rifampicina:** Sempre usar em associação (exceto profilaxias curtas); potente indutor enzimático com múltiplas interações; fundamental em TB, infecções com biofilme e profilaxia de meningite.
+6. **Gentamicina:** Fundamental na sinergia com beta-lactâmicos (endocardite, sepse neonatal); dose única diária preferida para gram-negativos; monitorização de níveis séricos e função renal obrigatória; atenção à nefro e ototoxicidade.
 
-7. **Teste D:** Obrigatório para clindamicina quando eritromicina-R e clindamicina-S (detecta resistência induzível).
+7. **Rifampicina:** Sempre usar em associação (exceto profilaxias curtas); potente indutor enzimático com múltiplas interações; fundamental em TB, infecções com biofilme e profilaxia de meningite.
+
+8. **Teste D:** Obrigatório para clindamicina quando eritromicina-R e clindamicina-S (detecta resistência induzível).
 
 O uso racional destes antimicrobianos, respeitando suas indicações específicas e limitações, contribui para melhores desfechos clínicos e preservação da eficácia antimicrobiana.
 

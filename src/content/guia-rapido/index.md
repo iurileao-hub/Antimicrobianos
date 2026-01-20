@@ -22,6 +22,7 @@ Este guia reúne as informações essenciais para consulta rápida sobre os prin
 | **Glicopeptídeos** | Vancomicina, Teicoplanina |
 | **Macrolídeos** | Azitromicina, Claritromicina |
 | **Lincosamida** | Clindamicina |
+| **Aminoglicosídeo** | Gentamicina |
 | **Rifamicina** | Rifampicina |
 | **Oxazolidinona** | Linezolida |
 | **Lipopeptídeo** | Daptomicina |
@@ -213,6 +214,7 @@ Este guia reúne as informações essenciais para consulta rápida sobre os prin
 | **Azitromicina** | Inibe síntese proteica (50S) | Cmax/CIM + AUC | VO, IV | 40-68 h | Biliar | Baixa |
 | **Claritromicina** | Inibe síntese proteica (50S) | Concentração-dependente + AUC/CIM | VO | 3-7 h | Renal (20-40%) + Biliar | Baixa |
 | **Clindamicina** | Inibe síntese proteica (50S) | T>CIM + EPA | VO, IV | 2-4 h | Biliar/Renal | Baixa |
+| **Gentamicina** | Inibe síntese proteica (30S) | Cmax/CIM + EPA | IV, IM | 2-3 h | Renal | Baixa* |
 | **Rifampicina** | Inibe RNA polimerase | Cmax/CIM | VO, IV | 2-5 h | Biliar | Excelente |
 | **Linezolida** | Inibe síntese proteica (50S, único) | AUC/CIM | VO, IV | 4-5 h | Renal/Hepático | Boa |
 | **Daptomicina** | Despolariza membrana celular | Cmax/CIM + AUC | IV | 8-9 h | Renal | Não |
@@ -272,6 +274,8 @@ Este guia reúne as informações essenciais para consulta rápida sobre os prin
 | Claritromicina | 15 mg/kg/dia | 12/12h | VO | 500 mg/dose |
 | Clindamicina | 25-40 mg/kg/dia | 6/6h ou 8/8h | VO, IV | 2,7 g/dia |
 | Rifampicina | 10-20 mg/kg/dia | 12/12h ou 24/24h | VO | 600 mg/dia |
+| Gentamicina (sinergia) | 3 mg/kg/dia | 8/8h | IV | - |
+| Gentamicina (gram-neg) | 5-7,5 mg/kg/dia | 24/24h (DUD) | IV | - |
 | Linezolida | <12a: 30 mg/kg/dia 8/8h; ≥12a: 600 mg 12/12h | 8/8h ou 12/12h | VO, IV | 1200 mg/dia |
 | Daptomicina | 6-12 mg/kg/dia | 24/24h | IV | 1000 mg/dia |
 
@@ -291,6 +295,7 @@ Este guia reúne as informações essenciais para consulta rápida sobre os prin
 | **Vancomicina** | 10-15 mg/kg conforme IG | Conforme IG | Ajustar por nível |
 | **Oxacilina** | 50-75 mg/kg/dia 12/12h | 100-150 mg/kg/dia 6-8/8h | - |
 | **Clindamicina** | 10-15 mg/kg/dia 8-12/12h | 15-20 mg/kg/dia 6-8/8h | - |
+| **Gentamicina** | ≤29s: 5mg/kg 48/48h; 30-34s: 4,5mg/kg 36/36h; ≥35s: 4mg/kg 24/24h | Ajustar conforme IG | Monitorar níveis |
 | **Linezolida** | 10 mg/kg 12/12h | 10 mg/kg 8/8h | - |
 | **Claritromicina** | Não recomendado <1 mês | Evitar em RN | Considerar após 1 mês se necessário |
 
@@ -306,6 +311,7 @@ Este guia reúne as informações essenciais para consulta rápida sobre os prin
 | **Ceftriaxona** | Contraindicada em RN <28d; não misturar com cálcio | Usar cefotaxima em neonatos |
 | **Vancomicina** | Síndrome homem vermelho; nefrotoxicidade | Infusão ≥1h; monitorar nível e função renal |
 | **Clindamicina** | Colite por *C. difficile* | Monitorar diarreia |
+| **Gentamicina** | Nefrotoxicidade; **ototoxicidade** (pode ser irreversível) | Níveis séricos obrigatórios; creatinina a cada 2-3 dias |
 | **Linezolida** | Mielossupressão (>2 sem); neuropatia | Hemograma semanal; limitar duração |
 | **Daptomicina** | **NÃO usar para pneumonia**; miopatia | CPK semanal |
 | **Rifampicina** | Interações medicamentosas extensas; hepatotoxicidade | Nunca monoterapia; monitorar TGO/TGP |
@@ -322,6 +328,7 @@ Este guia reúne as informações essenciais para consulta rápida sobre os prin
 |---------|------------------|------------|
 | **Vancomicina** | Todas infecções graves; antes da 4ª-5ª dose | Vale: 15-20 μg/mL ou AUC 400-600 |
 | **Teicoplanina** | Após dose de ataque (3ª dose) | Vale: >10 μg/mL (>20 para osteo/endocardite) |
+| **Gentamicina** | Antes da 3ª-4ª dose (steady-state) | Vale: <2 μg/mL; Pico: 5-10 μg/mL (fracionada) ou 15-25 μg/mL (DUD) |
 
 ---
 
