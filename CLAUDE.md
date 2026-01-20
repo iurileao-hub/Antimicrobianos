@@ -50,7 +50,7 @@ src/
 ├── pages/                          # File-based routing (Astro standard)
 │   ├── index.astro                # Homepage (/)
 │   ├── guia-rapido.astro          # Quick reference guide (Content Collection)
-│   ├── sobre.astro                # About course/author
+│   ├── sobre.astro                # About course/author + design philosophy
 │   ├── 404.astro                  # Custom 404 page (vintage cinema style)
 │   └── modulos/
 │       ├── index.astro            # Modules listing page
@@ -259,7 +259,7 @@ Module markdown files support:
 - Standardized breakpoints with CSS variables
 - Improved alt text and added table scope attributes
 
-## Project Status (December 2025)
+## Project Status (January 2026)
 
 ✅ **PROJETO CONCLUÍDO** - All modules and features implemented
 
@@ -279,6 +279,7 @@ All 4 modules complete with extensive content:
 - ✅ **TableOfContents Component** - Desktop sticky sidebar + mobile FAB with overlay for section navigation
 - ✅ **Guia de Consulta Rápida** - Comprehensive quick reference guide as Content Collection with full antimicrobial dosing tables
 - ✅ **Custom 404 Page** - Vintage cinema-themed error page ("Você encontrou os bastidores secretos!")
+- ✅ **Design Philosophy Section** - "Por Que a Era de Ouro do Cinema?" section on About page explaining the vintage aesthetic choice
 - ✅ **Auto-scroll TOC** - Active section automatically scrolls into view in the sidebar
 - ✅ **Improved Mobile Experience** - Responsive tables with horizontal scroll, optimized spacing
 - ✅ **Design System** - All styles consolidated in `vintage.css` (no duplication)
@@ -311,4 +312,4 @@ This project has comprehensive documentation:
 
 ---
 
-**Last Updated:** December 2025 | **Version:** 1.0.0 (Complete)
+**Last Updated:** January 2026 | **Version:** 1.0.0 (Complete)
